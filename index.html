@@ -1,0 +1,1112 @@
+<!DOCTYPE html>
+<html lang="en-CA">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=5.0">
+<title>SPUR | Show Up Ready</title>
+<meta name="description" content="Cut. Shape. Finish. Done right before the moment that matters. $49.99 flat. Not ready? We redo it free.">
+<meta property="og:title" content="SPUR | Show Up Ready">
+<meta property="og:description" content="Cut. Shape. Finish. Done right before the moment that matters. $49.99 flat. Not ready? We redo it free.">
+<meta property="og:image" content="https://spurreadynow.com/og-image.png">
+<meta property="og:type" content="website">
+<meta property="og:locale" content="en_CA" id="ogLocale">
+<meta property="og:locale:alternate" content="fr_CA">
+<meta name="twitter:card" content="summary_large_image">
+<link rel="canonical" href="https://spurreadynow.com/">
+<link rel="alternate" hreflang="en-CA" href="https://spurreadynow.com/?lang=en">
+<link rel="alternate" hreflang="fr-CA" href="https://spurreadynow.com/?lang=fr">
+<link rel="alternate" hreflang="x-default" href="https://spurreadynow.com/">
+<link rel="icon" href="/favicon.ico" sizes="any">
+<link rel="apple-touch-icon" href="/apple-touch-icon.png">
+<meta name="apple-mobile-web-app-capable" content="yes">
+<meta name="apple-mobile-web-app-status-bar-style" content="black-translucent">
+<meta name="theme-color" content="#0d0d0d">
+<link rel="manifest" href="manifest.json">
+<!-- Preconnect for performance -->
+<link rel="preconnect" href="https://quqcgjkbvajcltwuoqvz.supabase.co" crossorigin>
+<link rel="preconnect" href="https://formspree.io" crossorigin>
+<script src="https://cdn.jsdelivr.net/npm/@supabase/supabase-js@2.38.4/dist/umd/supabase.min.js" defer></script>
+<script type="application/ld+json">
+{
+  "@context": "https://schema.org",
+  "@type": "Organization",
+  "name": "SPUR",
+  "url": "https://spurreadynow.com",
+  "sameAs": ["https://instagram.com/spur.readynow"]
+}
+</script>
+<style>
+:root{--bg-color:#0d0d0d;--gold:#d4af37;--gold-dim:#b5952f;--silver:#a0a0a0;--text-main:#ffffff;--text-muted:#a0a0a0;--card-bg:#141414;--border-color:rgba(212,175,55,0.25);--safe-bottom:env(safe-area-inset-bottom, 20px)}
+*{margin:0;padding:0;box-sizing:border-box;font-family:-apple-system,BlinkMacSystemFont,sans-serif;font-display:swap}
+body{background-color:var(--bg-color);color:var(--text-main);min-height:100dvh;display:flex;flex-direction:column;align-items:center;padding:20px 20px calc(35px + var(--safe-bottom)) 20px;position:relative}
+/* Tap targets & Accessibility */
+button, a, select, .toggle-capsule {min-height:44px;min-width:44px}
+a:focus, button:focus, input:focus, select:focus {outline:2px solid var(--gold);outline-offset:2px}
+input, select, textarea {font-size:16px !important} /* Prevent iOS zoom */
+.vip-top-pill{width:100%;max-width:440px;background:rgba(255,255,255,0.02);border:1px solid var(--border-color);border-radius:30px;padding:10px 16px;margin-bottom:24px;display:flex;justify-content:space-between;align-items:center;cursor:pointer;transition:all .2s ease}
+.vip-top-pill:hover{border-color:var(--gold)}
+.vip-pill-left{display:flex;align-items:center;gap:8px;font-size:10px;font-weight:700;letter-spacing:1.2px;color:var(--text-muted);text-transform:uppercase}
+.vip-star{color:var(--gold);font-size:11px}
+.vip-pill-right{font-size:10px;font-weight:800;letter-spacing:1px;color:var(--gold);text-transform:uppercase}
+.header-container{width:100%;max-width:440px;display:flex;justify-content:space-between;align-items:flex-start;margin-bottom:25px}
+.top-right-group{display:flex;flex-direction:column;align-items:flex-end;gap:10px}
+.live-dot{width:6px;height:6px;background-color:#2ecc71;border-radius:50%;box-shadow:0 0 6px #2ecc71;transition:all .3s ease}
+.live-dot.offline{background-color:#7f8c8d;box-shadow:none}
+.controls-row{display:flex;gap:8px}
+.toggle-capsule{display:flex;align-items:center;background:rgba(255,255,255,0.03);padding:4px 8px;border-radius:12px;border:1px solid rgba(255,255,255,0.06)}
+.toggle-capsule button{background:none;border:none;color:var(--text-muted);cursor:pointer;font-size:10px;font-weight:600;padding:2px 3px;transition:color .2s ease}
+.toggle-capsule button.active{color:var(--gold)}
+.toggle-capsule span{color:#444;margin:0 3px;font-size:10px}
+.main-content{width:100%;max-width:440px;display:flex;flex-direction:column;align-items:center;flex-grow:1}
+.hero-section{width:100%;text-align:center;margin-bottom:30px}
+.hero-title{font-size:26px;font-weight:800;letter-spacing:1px;line-height:1.2;margin-bottom:12px;color:var(--text-main);text-transform:uppercase}
+.hero-subtitle{font-size:15px;line-height:1.4;color:var(--text-muted);margin-bottom:8px;font-weight:500}
+.guarantee-subtext{font-size:12px;color:var(--gold-dim);font-weight:600;margin-top:8px}
+.rotating-hook{font-size:13px;color:var(--text-main);font-style:italic;margin-top:15px;min-height:20px}
+.rotating-text{opacity:0;transition:opacity 0.5s ease;position:absolute;left:0;right:0}
+.rotating-text.active{opacity:1;position:relative}
+@media (prefers-reduced-motion: reduce) { .rotating-text {transition:none;} }
+.location-wrapper{width:100%;max-width:280px;margin:0 auto 30px auto;text-align:center}
+.cta-container{display:flex;flex-direction:column;align-items:center;width:100%;gap:20px;margin-bottom:30px}
+@keyframes breathing{0%{transform:scale(1);box-shadow:0 0 20px rgba(212,175,55,0.2)}50%{transform:scale(1.04);box-shadow:0 0 35px rgba(212,175,55,0.4)}100%{transform:scale(1);box-shadow:0 0 20px rgba(212,175,55,0.2)}}
+@media (prefers-reduced-motion: reduce) { .ready-circle-btn {animation:none;} }
+.ready-circle-btn{width:160px;height:160px;border-radius:50%;background:radial-gradient(circle at 35% 30%,#ffe382 0%,#d4af37 45%,#947a26 100%);box-shadow:inset 3px 3px 10px rgba(255,255,255,0.5),inset -5px -5px 15px rgba(0,0,0,0.3),0 0 20px rgba(212,175,55,0.2);color:#050505;display:flex;flex-direction:column;justify-content:center;align-items:center;border:none;cursor:pointer;animation:breathing 3s infinite ease-in-out;margin:0 auto;text-align:center;transition:transform .1s ease}
+.ready-circle-btn:active{transform:scale(.95)}
+.ready-line-1{font-size:19px;font-weight:800;letter-spacing:2px;line-height:1.1}
+.ready-line-2{font-size:18px;font-weight:800;letter-spacing:1.5px;line-height:1.1}
+.ready-later-btn{background:transparent;border:1px solid var(--border-color);color:var(--gold);padding:12px 24px;border-radius:30px;font-size:11px;font-weight:600;letter-spacing:1.5px;cursor:pointer;text-transform:uppercase;transition:all .2s ease;display:flex;align-items:center;gap:8px;margin-top:5px}
+.ready-later-btn:hover{border-color:var(--gold)}
+.cta-footer-note{font-size:12px;color:var(--text-muted);letter-spacing:.5px;text-align:center;margin-top:5px;max-width:320px;line-height:1.4}
+.site-footer{width:100%;text-align:center;padding-top:25px;margin-top:auto;border-top:1px solid rgba(255,255,255,0.05);font-size:11px;color:#777;letter-spacing:.5px;line-height:1.8}
+.site-footer a{color:var(--text-muted);text-decoration:none;transition:color .2s;font-weight:600;cursor:pointer}
+.site-footer a:hover{color:var(--gold);text-decoration:underline}
+.modal-overlay{position:fixed;top:0;left:0;width:100%;height:100%;background:rgba(0,0,0,0.85);backdrop-filter:blur(6px);display:none;justify-content:center;align-items:center;z-index:100;padding:20px;overflow-y:auto}
+.modal-card{background:var(--card-bg);border:1px solid var(--border-color);border-radius:20px;padding:28px 24px;width:100%;max-width:380px;text-align:center;box-shadow:0 15px 35px rgba(0,0,0,0.6);margin:auto;position:relative}
+.modal-card h3{color:var(--text-main);font-size:22px;margin-bottom:10px;font-weight:600}
+.modal-card p{color:var(--text-muted);font-size:13px;margin-bottom:20px;line-height:1.4;padding:0 10px}
+.modal-input{width:100%;background-color:#141414!important;color:#fff!important;border:1px solid var(--border-color);padding:14px;border-radius:12px;font-size:16px;text-align:center;letter-spacing:1px;margin-bottom:12px;outline:none;appearance:none;transition:border-color .2s;font-weight:600}
+select.modal-input{text-align-last:center}
+select.modal-input option{background:#141414;color:#fff}
+.modal-capsule-btn{background:var(--gold);color:#0d0d0d;border:none;padding:14px 24px;border-radius:30px;font-size:12px;font-weight:800;cursor:pointer;margin:10px auto 0 auto;width:100%;text-transform:uppercase;transition:all .2s}
+.modal-capsule-btn:disabled{opacity:0.6;cursor:not-allowed}
+.modal-capsule-btn-secondary{background:transparent;color:var(--text-main);border:1px solid var(--border-color);padding:12px 20px;border-radius:30px;font-size:11px;font-weight:700;cursor:pointer;margin:8px auto 0 auto;width:100%;text-transform:uppercase;letter-spacing:1px}
+.modal-close{background:none;border:none;color:var(--text-muted);font-size:12px;cursor:pointer;margin-top:15px;display:inline-block}
+.perks-mini-box{background:rgba(255,255,255,0.02);border:1px solid var(--border-color);border-radius:12px;padding:14px;margin-bottom:16px;text-align:left;font-size:12px;color:var(--text-muted);line-height:1.5}
+.detailed-steps{text-align:left;margin:24px 0}
+.detailed-step-row{margin-bottom:16px;padding-bottom:16px;border-bottom:1px solid rgba(255,255,255,0.05)}
+.detailed-step-row:last-child{border-bottom:none;margin-bottom:0;padding-bottom:0}
+.step-number{color:var(--gold);font-size:14px;font-weight:800;margin-bottom:4px;text-transform:uppercase;letter-spacing:1px}
+.step-desc{color:var(--text-muted);font-size:13px;line-height:1.4}
+.faq-accordion{text-align:left;width:100%;max-width:440px;margin-top:20px;border-top:1px solid rgba(255,255,255,0.05)}
+.faq-item{border-bottom:1px solid rgba(255,255,255,0.05)}
+.faq-question{width:100%;text-align:left;background:none;border:none;color:var(--text-main);font-size:14px;font-weight:600;padding:16px 0;cursor:pointer;display:flex;justify-content:space-between;align-items:center}
+.faq-answer{padding-bottom:16px;font-size:13px;color:var(--text-muted);line-height:1.5;display:none}
+.consent-wrap{display:flex;align-items:flex-start;gap:8px;text-align:left;font-size:10px;color:var(--text-muted);margin:10px 0}
+.consent-wrap input{min-width:16px;min-height:16px;margin-top:2px}
+#finalSuccessView{display:none;width:100%;max-width:440px;text-align:center}
+.success-header-tag{display:inline-block;font-size:10px;font-weight:700;letter-spacing:2px;color:var(--gold);background:rgba(212,175,55,0.1);border:1px solid rgba(212,175,55,0.3);padding:6px 14px;border-radius:20px;text-transform:uppercase;margin-bottom:20px}
+.success-main-title{font-size:32px;font-weight:700;color:var(--text-main);margin-bottom:8px}
+.success-receipt-card{background:var(--card-bg);border:1px solid var(--border-color);border-radius:24px;padding:28px 24px;text-align:left;position:relative;overflow:hidden;box-shadow:0 15px 40px rgba(0,0,0,0.6)}
+.receipt-grid{display:grid;grid-template-columns:1fr 1fr;gap:12px;margin-bottom:20px}
+.receipt-grid-box{background:rgba(255,255,255,0.02);border:1px solid rgba(255,255,255,0.06);border-radius:14px;padding:16px;text-align:center}
+.receipt-action-btn{background:var(--gold);color:#0d0d0d;padding:14px 24px;border-radius:30px;font-size:12px;font-weight:800;display:flex;justify-content:center;gap:8px;margin-top:20px;text-decoration:none}
+/* Sticky mobile CTA */
+.sticky-cta{position:fixed;bottom:-100px;left:0;width:100%;background:rgba(13,13,13,0.95);backdrop-filter:blur(10px);padding:15px;display:flex;justify-content:center;z-index:90;transition:bottom 0.3s ease;border-top:1px solid rgba(212,175,55,0.2)}
+.sticky-cta.show{bottom:0}
+@media (min-width: 769px) { .sticky-cta {display:none;} }
+</style>
+</head>
+<body>
+<div class="main-content" id="mainAppContainer">
+    
+    <button class="vip-top-pill" onclick="safeOpenModal('spurtanModal')" aria-label="Founding Spurtan Access">
+        <div class="vip-pill-left"><span class="vip-star">✦</span><span data-en="Founding Spurtan Access" data-fr="Accès Spurtan Fondateur">Founding Spurtan Access</span></div>
+        <div class="vip-pill-right" data-en="Own the Hour Before →" data-fr="Maîtrisez votre heure →">Own the Hour Before →</div>
+    </button>
+    
+    <div class="header-container">
+        <div class="logo-area" style="display: flex; flex-direction: column; align-items: flex-start;">
+            <div style="display: flex; align-items: flex-start; line-height: 1; margin-bottom: 6px;">
+                <span style="font-size: 32px; font-weight: 800; letter-spacing: 6px; color: #ffffff;">SPU</span><span style="font-size: 32px; font-weight: 800; letter-spacing: 2px; color: var(--gold);">R</span><span style="font-size: 14px; color: var(--gold); margin-top: 0px; margin-left: 4px;">✦</span>
+            </div>
+            <span style="font-size: 8px; font-weight: 700; letter-spacing: 2.5px; color: var(--gold); text-transform: uppercase;" data-en="THE READINESS COMPANY" data-fr="LA MARQUE QUI VOUS PRÉPARE">THE READINESS COMPANY</span>
+        </div>
+        <div class="top-right-group">
+            <div class="controls-row">
+                <div class="toggle-capsule">
+                    <button onclick="switchLanguage('en')" id="btn-en" class="active" aria-label="English">EN</button>
+                    <span>|</span>
+                    <button onclick="switchLanguage('fr')" id="btn-fr" aria-label="Français">FR</button>
+                </div>
+            </div>
+        </div>
+    </div>
+    
+    <div class="hero-section">
+        <h1 class="hero-title" data-en="SHOW UP READY." data-fr="SOYEZ PRÊT·E.">SHOW UP READY.</h1>
+        <div class="hero-subtitle" data-en="Cut. Shape. Finish. Done right before the moment that matters. $49.99 flat." data-fr="Coupe. Contours. Finition. Réalisé juste avant le moment qui compte. 49,99 $ tarif fixe.">Cut. Shape. Finish. Done right before the moment that matters. $49.99 flat.</div>
+        <div class="guarantee-subtext" data-en="Not ready? We redo it free. Still not happy? Full refund." data-fr="Pas prêt·e ? Nous recommençons gratuitement. Toujours pas satisfait·e ? Remboursement complet.">Not ready? We redo it free. Still not happy? Full refund.</div>
+        
+        <div class="rotating-hook" aria-live="polite">
+            <div class="rotating-text active" data-en="Interview at 2? Be ready by 1." data-fr="Entretien à 14 h ? Soyez prêt·e à 13 h.">Interview at 2? Be ready by 1.</div>
+            <div class="rotating-text" data-en="Date at 8? Be ready by 7." data-fr="Rendez-vous à 20 h ? Soyez prêt·e à 19 h.">Date at 8? Be ready by 7.</div>
+            <div class="rotating-text" data-en="Wedding Saturday? Be ready Friday." data-fr="Mariage samedi ? Soyez prêt·e vendredi.">Wedding Saturday? Be ready Friday.</div>
+        </div>
+    </div>
+    
+    <div class="location-wrapper">
+        <label for="mainCitySelect" style="display:block; font-size: 10px; font-weight: 700; letter-spacing: 2px; color: var(--text-muted); margin-bottom: 10px; text-transform: uppercase;" data-en="SELECT YOUR CITY" data-fr="VILLE DE VOTRE CHOIX">SELECT YOUR CITY</label>
+        <select id="mainCitySelect" class="modal-input" style="padding: 12px; margin-bottom: 0;" onchange="setCity(this.value)">
+            <option value="yvr" data-en="VANCOUVER" data-fr="VANCOUVER">VANCOUVER</option>
+            <option value="yul" data-en="MONTRÉAL" data-fr="MONTRÉAL">MONTRÉAL</option>
+            <option value="yyz" data-en="TORONTO" data-fr="TORONTO">TORONTO</option>
+        </select>
+    </div>
+    
+    <div class="cta-container" id="activeBookingFlow">
+        <div>
+            <button class="ready-circle-btn" onclick="openIntercept('now')" id="mainReadyNowBtn">
+                <span class="ready-line-1" data-en="READY" data-fr="READY">READY</span>
+                <span class="ready-line-2" data-en="NOW™" data-fr="NOW™">NOW™</span>
+            </button>
+            <div class="cta-footer-note" data-en="A SPUR Specialist assesses what you need.<br>You just show up." data-fr="Dites-nous où vous êtes.<br>On s'occupe du reste.">A SPUR Specialist assesses what you need.<br>You just show up.</div>
+        </div>
+        
+        <button class="ready-later-btn" onclick="openIntercept('later')">
+            <svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="var(--gold)" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><rect x="3" y="4" width="18" height="18" rx="2" ry="2"></rect><line x1="16" y1="2" x2="16" y2="6"></line><line x1="8" y1="2" x2="8" y2="6"></line><line x1="3" y1="10" x2="21" y2="10"></line></svg>
+            <span data-en="READY LATER™" data-fr="READY LATER™">READY LATER™</span>
+        </button>
+        <div class="cta-footer-note" style="font-size:11px;" data-en="Book a time that works. We'll coordinate availability." data-fr="Réservez l'heure qui vous convient. Nous coordonnerons la disponibilité.">Book a time that works. We'll coordinate availability.</div>
+        
+        <div style="display: flex; flex-direction: column; align-items: center; margin-top: 5px;">
+            <div style="display: flex; align-items: center; gap: 6px; margin-bottom: 6px; font-size: 10px; font-weight: 700; letter-spacing: 1px; color: var(--text-muted); text-transform: uppercase;">
+                <div class="live-dot" id="liveDotIndicator"></div>
+                <span id="liveBadgeText" aria-live="polite">CONCIERGE ONLINE</span>
+            </div>
+            <div class="active-hours-note" id="hoursNote" style="margin-top: 0;"></div>
+        </div>
+        <button type="button" onclick="safeOpenModal('codeModal')" style="background:none; border:none; color:var(--text-muted); font-size:10px; font-weight:700; text-decoration:underline; cursor:pointer; margin-top:10px;" data-en="HAVE SPURTAN CODE?" data-fr="AVEZ-VOUS UN CODE SPURTAN ?">HAVE SPURTAN CODE?</button>
+    </div>
+
+    <div class="cta-container" id="waitlistFlow" style="display: none;">
+        <div class="inline-pricing" style="color: var(--text-muted);" data-en="WAITLIST OPEN" data-fr="LISTE D'ATTENTE OUVERTE">WAITLIST OPEN</div>
+        <button class="modal-capsule-btn-secondary" onclick="safeOpenModal('waitlistModal')" style="border-color: var(--gold); color: var(--gold); width: 220px; font-size: 12px; padding: 15px;" data-en="JOIN THE WAITLIST" data-fr="REJOINDRE LA LISTE D'ATTENTE">JOIN THE WAITLIST</button>
+    </div>
+
+    <!-- FAQ Accordion Section -->
+    <div class="faq-accordion">
+        <div class="faq-item">
+            <button class="faq-question" aria-expanded="false" onclick="toggleFaq(this)">
+                <span data-en="What happens after I request?" data-fr="Que se passe-t-il après ma demande ?">What happens after I request?</span>
+                <span class="faq-icon">+</span>
+            </button>
+            <div class="faq-answer" data-en="Your concierge confirms on WhatsApp, matches you with an available specialist near you, and shares their details and location." data-fr="Votre concierge confirme sur WhatsApp, vous associe à un spécialiste disponible près de chez vous et partage ses coordonnées et son emplacement.">Your concierge confirms on WhatsApp, matches you with an available specialist near you, and shares their details and location.</div>
+        </div>
+        <div class="faq-item">
+            <button class="faq-question" aria-expanded="false" onclick="toggleFaq(this)">
+                <span data-en="Where do I go?" data-fr="Où dois-je aller ?">Where do I go?</span>
+                <span class="faq-icon">+</span>
+            </button>
+            <!-- DRAFT COPY -->
+            <div class="faq-answer" data-en="To your matched specialist's shop." data-fr="Au salon du spécialiste qui vous a été attribué.">To your matched specialist's shop.</div>
+        </div>
+        <div class="faq-item">
+            <button class="faq-question" aria-expanded="false" onclick="toggleFaq(this)">
+                <span data-en="What does $49.99 include?" data-fr="Qu'est-ce qui est inclus dans les 49,99 $ ?">What does $49.99 include?</span>
+                <span class="faq-icon">+</span>
+            </button>
+            <div class="faq-answer" data-en="One flat-rate service with your specialist: cut, shape, finish as needed." data-fr="Un service à tarif fixe avec votre spécialiste : coupe, contours, finition selon vos besoins.">One flat-rate service with your specialist: cut, shape, finish as needed.</div>
+        </div>
+        <div class="faq-item">
+            <button class="faq-question" aria-expanded="false" onclick="toggleFaq(this)">
+                <span data-en="What if I'm not happy?" data-fr="Que faire si je ne suis pas satisfait·e ?">What if I'm not happy?</span>
+                <span class="faq-icon">+</span>
+            </button>
+            <div class="faq-answer" data-en="Not ready? We redo it free. Still not happy? Full refund. <a href='terms.html#guarantee' style='color:var(--gold);'>See Guarantee.</a>" data-fr="Pas prêt·e ? Nous recommençons gratuitement. Toujours pas satisfait·e ? Remboursement complet. <a href='terms-fr.html#guarantee' style='color:var(--gold);'>Voir la Garantie.</a>">Not ready? We redo it free. Still not happy? Full refund. <a href="terms.html#guarantee" style="color:var(--gold);">See Guarantee.</a></div>
+        </div>
+        <div class="faq-item">
+            <button class="faq-question" aria-expanded="false" onclick="toggleFaq(this)">
+                <span data-en="Can I cancel or reschedule?" data-fr="Puis-je annuler ou reprogrammer ?">Can I cancel or reschedule?</span>
+                <span class="faq-icon">+</span>
+            </button>
+            <!-- DRAFT COPY -->
+            <div class="faq-answer" data-en="Message your concierge on WhatsApp." data-fr="Envoyez un message à votre concierge sur WhatsApp.">Message your concierge on WhatsApp.</div>
+        </div>
+    </div>
+    
+    <div class="site-footer">
+        <div style="display: flex; justify-content: center; align-items: center; flex-wrap: wrap; gap: 12px; margin-bottom: 20px; font-size: 11px;">
+            <a onclick="safeOpenModal('howItWorksModal')" data-en="How It Works" data-fr="Comment ça marche" tabindex="0" role="button">How It Works</a>
+            <span style="color: rgba(255,255,255,0.15);">|</span>
+            <a onclick="openHistoryModal()" data-en="My Bookings" data-fr="Mes Réservations" tabindex="0" role="button">My Bookings</a>
+            <span style="color: rgba(255,255,255,0.15);">|</span>
+            <a href="terms.html" data-en="Terms" data-fr="Conditions" id="footerTermsLink">Terms</a>
+            <span style="color: rgba(255,255,255,0.15);">|</span>
+            <a href="privacy.html" data-en="Privacy" data-fr="Confidentialité" id="footerPrivacyLink">Privacy</a>
+            <span style="color: rgba(255,255,255,0.15);">|</span>
+            <a href="https://instagram.com/spur.readynow" target="_blank" rel="noopener">Instagram</a>
+        </div>
+        <div style="opacity: 0.4; font-size: 10px;">© 2026 SPUR</div>
+    </div>
+</div>
+
+<div class="sticky-cta" id="stickyCta">
+    <button class="modal-capsule-btn" onclick="openIntercept('now')" style="margin:0;" data-en="READY NOW" data-fr="READY NOW">READY NOW</button>
+</div>
+
+<!-- HOW IT WORKS MODAL -->
+<div id="howItWorksModal" class="modal-overlay" role="dialog" aria-modal="true" aria-labelledby="hwTitle">
+    <div class="modal-card">
+        <h3 id="hwTitle" data-en="The SPUR Standard" data-fr="Le Standard SPUR">The SPUR Standard</h3>
+        <p style="color:var(--gold); font-style:italic;" data-en="We don't look at menus. We look at you." data-fr="On s'occupe de vous.">We don't look at menus. We look at you.</p>
+        <div class="detailed-steps">
+            <div class="detailed-step-row">
+                <div class="step-number" data-en="01. WE FIND YOUR SPECIALIST" data-fr="01. NOUS TROUVONS VOTRE SPÉCIALISTE">01. WE FIND YOUR SPECIALIST</div>
+                <div class="step-desc" data-en="We find a specialist near you. You go to them." data-fr="Nous trouvons un spécialiste près de chez vous. Vous vous rendez à son établissement.">We find a specialist near you. You go to them.</div>
+            </div>
+            <div class="detailed-step-row">
+                <div class="step-number" data-en="02. THE MATCH" data-fr="02. NOUS VOUS METTONS EN RELATION">02. THE MATCH</div>
+                <div class="step-desc" data-en="We connect you with an appropriate available specialist." data-fr="Nous vous mettons en contact avec un spécialiste disponible qui correspond à votre demande.">We connect you with an appropriate available specialist.</div>
+            </div>
+            <div class="detailed-step-row">
+                <div class="step-number" data-en="03. THE CONSULTATION" data-fr="03. LA CONSULTATION">03. THE CONSULTATION</div>
+                <div class="step-desc" data-en="Your specialist assesses and recommends. You approve." data-fr="Votre spécialiste évalue vos besoins et vous recommande une option. Vous donnez votre accord avant le service.">Your specialist assesses and recommends. You approve.</div>
+            </div>
+            <div class="detailed-step-row">
+                <div class="step-number" data-en="04. SHOW UP READY" data-fr="04. VOUS REPARTEZ PRÊT·E">04. SHOW UP READY</div>
+                <div class="step-desc" data-en="Your service is completed. You leave ready. Typically about 30 minutes." data-fr="Le service convenu est réalisé. Vous repartez prêt·e pour la suite. Généralement environ 30 minutes.">Your service is completed. You leave ready. Typically about 30 minutes.</div>
+            </div>
+        </div>
+        <div class="perks-mini-box" style="text-align: center; margin-top: 5px;">
+            <a href="terms.html#guarantee" class="terms-link-dyn" style="color:var(--gold); text-decoration:underline; font-weight:700;" data-en="The SPUR Guarantee:" data-fr="La Garantie SPUR :">The SPUR Guarantee:</a><br>
+            <span data-en="Not ready? We redo it free.<br>Still not happy? Full refund." data-fr="Pas prêt·e ? Nous recommençons gratuitement.<br>Toujours pas satisfait·e ? Remboursement complet.">Not ready? We redo it free.<br>Still not happy? Full refund.</span>
+        </div>
+        <button class="modal-capsule-btn" onclick="closeModals()" data-en="GOT IT" data-fr="COMPRIS">GOT IT</button>
+    </div>
+</div>
+
+<!-- HISTORY MODAL -->
+<div id="historyModal" class="modal-overlay" role="dialog" aria-modal="true" aria-labelledby="histTitle">
+    <div class="modal-card" style="display: flex; flex-direction: column;">
+        <h3 id="histTitle" data-en="Your Bookings" data-fr="Vos Réservations">Your Bookings</h3>
+        <p style="font-size:11px; margin-bottom:5px;" data-en="Saved on this device only" data-fr="Sauvegardé sur cet appareil uniquement">Saved on this device only</p>
+        <div id="historyContent" style="flex-grow: 1; max-height: 400px; overflow-y: auto; margin: 15px 0; text-align: left;"></div>
+        <button class="modal-capsule-btn" onclick="closeModals()" data-en="CLOSE" data-fr="FERMER" style="margin-top: auto;">CLOSE</button>
+    </div>
+</div>
+
+<!-- INTERCEPT MODAL -->
+<div id="interceptModal" class="modal-overlay" role="dialog" aria-modal="true" aria-labelledby="intTitle">
+    <div class="modal-card">
+        <h3 id="intTitle" data-en="Securing Your Chair" data-fr="Sécurisation de votre place">Securing Your Chair</h3>
+        <p id="interceptStatusDesc" data-en="Recognizing your profile preferences..." data-fr="Reconnaissance de vos préférences de profil...">Recognizing your profile preferences...</p>
+        <div style="margin: 20px 0;"><strong style="color: var(--text-main); font-size: 16px;" id="recognizedSpecialistText">Request again?</strong></div>
+        <button class="modal-capsule-btn" onclick="confirmPreviousSpecialist()" data-en="YES, TRY AGAIN" data-fr="OUI, RÉESSAYER">YES, TRY AGAIN</button>
+        <button class="modal-capsule-btn-secondary" onclick="skipIntercept()" data-en="YES, TRY AGAIN" data-fr="OUI, RÉESSAYER">YES, TRY AGAIN</button>
+        <button class="modal-close" onclick="closeModals()" data-en="CANCEL" data-fr="ANNULER">CANCEL</button>
+    </div>
+</div>
+
+<!-- READY NOW MODAL (SPURREADY - NO OCCASIONS) -->
+<div id="verifyModal" class="modal-overlay" role="dialog" aria-modal="true" aria-labelledby="nowTitle">
+    <div class="modal-card">
+        <h3 id="nowTitle" class="dynamic-header" data-en="Get Ready Now" data-fr="Préparez-vous Maintenant">Get Ready Now</h3>
+        <p class="dynamic-desc" data-en="Enter your details. We will coordinate your match." data-fr="Entrez vos coordonnées. Nous coordonnerons votre match.">Enter your details. We will coordinate your match.</p>
+        <form action="https://formspree.io/f/mjykllwj" method="POST" onsubmit="handleSubmit(event, 'now')">
+            <input type="text" name="_gotcha" style="display:none" tabindex="-1" autocomplete="off">
+            <input type="hidden" name="city_location" class="formCityField" value="Vancouver">
+            <input type="hidden" name="dispatch_channel" value="Priority Ready">
+            <input type="hidden" name="requested_specialist" class="specialistHiddenField" value="Priority Match">
+            <input type="hidden" name="request_id" class="requestIdField" value="">
+            <div id="inputFieldsWrapper">
+                <div class="contact-fields">
+                    <label for="nameInputNow" class="sr-only" style="display:none;">First Name</label>
+                    <input type="text" class="modal-input" name="client_name" id="nameInputNow" placeholder="First Name" data-en-placeholder="First Name" data-fr-placeholder="Prénom" required>
+                    <label for="phoneInputNow" class="sr-only" style="display:none;">Mobile Number</label>
+                    <input type="tel" class="modal-input" name="client_phone" id="phoneInputNow" placeholder="10 Digit Mobile" data-en-placeholder="10 Digit Mobile" data-fr-placeholder="Mobile à 10 chiffres" required>
+                </div>
+            </div>
+            <div class="consent-wrap">
+                <input type="checkbox" id="consentNow" required>
+                <label for="consentNow" data-en="I agree to be contacted by SPUR by WhatsApp, SMS or email about my request. I can unsubscribe anytime." data-fr="Je suis d'accord pour être contacté·e par SPUR par WhatsApp, SMS ou courriel au sujet de ma demande. Je peux me désabonner à tout moment.">I agree to be contacted by SPUR by WhatsApp, SMS or email about my request. I can <a href="privacy.html" class="privacy-link-dyn" style="color:var(--gold);">unsubscribe</a> anytime.</label>
+            </div>
+            <p class="guarantee-subtext" style="text-align:left; margin-bottom:15px; font-weight:normal; font-size:10px;">
+                <span data-en="By submitting you agree to the " data-fr="En soumettant, vous acceptez les ">By submitting you agree to the </span>
+                <a href="terms.html" class="terms-link-dyn" style="color:var(--gold);text-decoration:underline;" data-en="Terms" data-fr="Conditions">Terms</a> 
+                <span data-en=" and " data-fr=" et la "> and </span>
+                <a href="privacy.html" class="privacy-link-dyn" style="color:var(--gold);text-decoration:underline;" data-en="Privacy Policy" data-fr="Politique de confidentialité">Privacy Policy</a>.
+            </p>
+            <button type="submit" class="modal-capsule-btn" id="nowSubmitBtn" data-en="SEND REQUEST" data-fr="ENVOYER LA DEMANDE">SEND REQUEST</button>
+        </form>
+        <button class="modal-close" onclick="closeModals()" data-en="CANCEL" data-fr="ANNULER">CANCEL</button><br>
+        <button type="button" class="reset-user-link" id="resetUserBtn" onclick="resetUser()" data-en="Not you? Reset details" data-fr="Pas vous ? Réinitialiser">Not you? Reset details</button>
+    </div>
+</div>
+
+<!-- READY LATER MODAL (SPURREADY - NO OCCASIONS) -->
+<div id="laterModal" class="modal-overlay" role="dialog" aria-modal="true" aria-labelledby="laterTitle">
+    <div class="modal-card">
+        <h3 id="laterTitle" class="dynamic-header" data-en="Plan Ahead" data-fr="Planifier à l'avance">Plan Ahead</h3>
+        <p class="dynamic-desc" data-en="Book a time that works. We'll coordinate availability." data-fr="Réservez l'heure qui vous convient. Nous coordonnerons la disponibilité.">Book a time that works. We'll coordinate availability.</p>
+        <form action="https://formspree.io/f/mjykllwj" method="POST" onsubmit="handleSubmit(event, 'later')">
+            <input type="text" name="_gotcha" style="display:none" tabindex="-1" autocomplete="off">
+            <input type="hidden" name="city_location" class="formCityField" value="Vancouver">
+            <input type="hidden" name="dispatch_channel" value="Scheduled Request">
+            <input type="hidden" name="requested_specialist" class="specialistHiddenField" value="Priority Match">
+            <input type="hidden" name="request_id" class="requestIdField" value="">
+            <div id="inputFieldsWrapperLater">
+                <div class="contact-fields">
+                    <label for="nameInputLater" class="sr-only" style="display:none;">First Name</label>
+                    <input type="text" class="modal-input" name="client_name" id="nameInputLater" placeholder="First Name" data-en-placeholder="First Name" data-fr-placeholder="Prénom" required>
+                    <label for="phoneInputLater" class="sr-only" style="display:none;">Mobile Number</label>
+                    <input type="tel" class="modal-input" name="client_phone" id="phoneInputLater" placeholder="10 Digit Mobile" data-en-placeholder="10 Digit Mobile" data-fr-placeholder="Mobile à 10 chiffres" required>
+                </div>
+            </div>
+            
+            <label for="laterDateInput" class="sr-only" style="display:none;">Date</label>
+            <input type="date" class="modal-input" name="requested_date" id="laterDateInput" required>
+            
+            <label for="laterTimeInput" class="sr-only" style="display:none;">Time</label>
+            <select class="modal-input" name="requested_time" id="laterTimeInput" required>
+                <option value="" disabled selected data-en="Select Preferred Time" data-fr="Sélectionnez l'heure">Select Preferred Time</option>
+                <option value="9:00 AM">9:00 AM</option><option value="10:00 AM">10:00 AM</option><option value="11:00 AM">11:00 AM</option><option value="12:00 PM">12:00 PM</option><option value="1:00 PM">1:00 PM</option><option value="2:00 PM">2:00 PM</option><option value="3:00 PM">3:00 PM</option><option value="4:00 PM">4:00 PM</option><option value="5:00 PM">5:00 PM</option><option value="6:00 PM">6:00 PM</option><option value="7:00 PM">7:00 PM</option><option value="8:00 PM">8:00 PM</option>
+            </select>
+            <p style="font-size:10px; color:var(--text-muted); margin-top:-5px; margin-bottom:10px;" id="tzHintLater"></p>
+
+            <div class="consent-wrap">
+                <input type="checkbox" id="consentLater" required>
+                <label for="consentLater" data-en="I agree to be contacted by SPUR by WhatsApp, SMS or email about my request. I can unsubscribe anytime." data-fr="Je suis d'accord pour être contacté·e par SPUR par WhatsApp, SMS ou courriel au sujet de ma demande. Je peux me désabonner à tout moment.">I agree to be contacted by SPUR by WhatsApp, SMS or email about my request. I can <a href="privacy.html" class="privacy-link-dyn" style="color:var(--gold);">unsubscribe</a> anytime.</label>
+            </div>
+            <p class="guarantee-subtext" style="text-align:left; margin-bottom:15px; font-weight:normal; font-size:10px;">
+                <span data-en="By submitting you agree to the " data-fr="En soumettant, vous acceptez les ">By submitting you agree to the </span>
+                <a href="terms.html" class="terms-link-dyn" style="color:var(--gold);text-decoration:underline;" data-en="Terms" data-fr="Conditions">Terms</a> 
+                <span data-en=" and " data-fr=" et la "> and </span>
+                <a href="privacy.html" class="privacy-link-dyn" style="color:var(--gold);text-decoration:underline;" data-en="Privacy Policy" data-fr="Politique de confidentialité">Privacy Policy</a>.
+            </p>
+
+            <button type="submit" class="modal-capsule-btn" data-en="REQUEST SCHEDULED COMMITMENT" data-fr="DEMANDER UNE VISITE PLANIFIÉE">REQUEST SCHEDULED COMMITMENT</button>
+        </form>
+        <button class="modal-close" onclick="closeModals()" data-en="CANCEL" data-fr="ANNULER">CANCEL</button><br>
+        <button type="button" class="reset-user-link" id="resetUserBtnLater" onclick="resetUser()" data-en="Not you? Reset details" data-fr="Pas vous ? Réinitialiser" style="display:none;">Not you? Reset details</button>
+    </div>
+</div>
+
+<div id="codeModal" class="modal-overlay" role="dialog" aria-modal="true" aria-labelledby="codeTitle">
+    <div class="modal-card">
+        <h3 id="codeTitle" data-en="Enter SPURTAN Code" data-fr="Entrez le code SPURTAN">Enter SPURTAN Code</h3>
+        <p data-en="Please enter your unique membership code." data-fr="Veuillez entrer votre code d'adhésion unique.">Please enter your unique membership code.</p>
+        <form action="https://formspree.io/f/mjykllwj" method="POST" onsubmit="handleCodeSubmit(event)">
+            <input type="text" name="_gotcha" style="display:none" tabindex="-1" autocomplete="off">
+            <input type="hidden" name="city_location" class="formCityField" value="Vancouver">
+            <label for="spurInput" class="sr-only" style="display:none;">Code</label>
+            <input type="text" class="modal-input" name="spurtan_code" placeholder="Your code" id="spurInput" required style="text-transform: uppercase;">
+            <button type="submit" class="modal-circle-btn" data-en="APPLY" data-fr="APPLIQUER">APPLY</button>
+        </form>
+        <button class="modal-close" onclick="closeModals()" data-en="CANCEL" data-fr="ANNULER">CANCEL</button>
+    </div>
+</div>
+
+<div id="spurtanModal" class="modal-overlay" role="dialog" aria-modal="true" aria-labelledby="founderTitle">
+    <div class="modal-card">
+        <h3 id="founderTitle" data-en="Founding Spurtan Access" data-fr="Accès Spurtan Fondateur">Founding Spurtan Access</h3>
+        <p data-en="Own the hour before. Join the private pilot and lock in preferred rates." data-fr="Maîtrisez votre heure. Rejoignez le pilote privé et bloquez les tarifs préférentiels.">Own the hour before. Join the private pilot and lock in preferred rates.</p>
+        <div class="perks-mini-box" style="text-align: left;">
+            • <strong data-en="$39.99 CAD Founding Offer" data-fr="39,99 $ CAD Offre Fondateur">$39.99 CAD Founding Offer</strong> <span data-en="for your first visit (Standard: $49.99)." data-fr="pour votre 1ère visite (Standard : 49,99 $).">for your first visit (Standard: $49.99).</span><br>
+            • <a href="terms.html#guarantee" class="terms-link-dyn" style="color:var(--gold); text-decoration:underline; font-weight:700;" data-en="The SPUR Guarantee:" data-fr="La Garantie SPUR :">The SPUR Guarantee:</a> <span data-en="Not ready? We redo it free. Still not happy? Full refund." data-fr="Pas prêt·e ? Nous recommençons gratuitement. Toujours pas satisfait·e ? Remboursement complet.">Not ready? We redo it free. Still not happy? Full refund.</span>
+        </div>
+        <form action="https://formspree.io/f/mjykllwj" method="POST" onsubmit="handleSpurtanRegister(event)">
+            <input type="text" name="_gotcha" style="display:none" tabindex="-1" autocomplete="off">
+            <input type="hidden" name="request_id" class="requestIdField" value="">
+            <label for="founderName" class="sr-only" style="display:none;">First Name</label>
+            <input type="text" class="modal-input" name="client_name" id="founderName" required placeholder="First Name" data-en-placeholder="First Name" data-fr-placeholder="Prénom">
+            <label for="founderPhone" class="sr-only" style="display:none;">Mobile Number</label>
+            <input type="tel" class="modal-input" name="client_phone" id="founderPhone" required placeholder="10 Digit Mobile" data-en-placeholder="10 Digit Mobile" data-fr-placeholder="Mobile à 10 chiffres">
+            <label for="spurtanNodeSelect" class="sr-only" style="display:none;">City</label>
+            <select class="modal-input" name="launch_node" id="spurtanNodeSelect" required>
+                <option value="Vancouver" data-en="Vancouver (Live)" data-fr="Vancouver (En Direct)">Vancouver (Live)</option>
+                <option value="Montréal" data-en="Montréal (Waitlist)" data-fr="Montréal (Liste d'attente)">Montréal (Waitlist)</option>
+                <option value="Toronto" data-en="Toronto (Waitlist)" data-fr="Toronto (Liste d'attente)">Toronto (Waitlist)</option>
+            </select>
+            
+            <div class="consent-wrap">
+                <input type="checkbox" id="consentFounder" required>
+                <label for="consentFounder" data-en="I agree to be contacted by SPUR by WhatsApp, SMS or email about my request. I can unsubscribe anytime." data-fr="Je suis d'accord pour être contacté·e par SPUR par WhatsApp, SMS ou courriel au sujet de ma demande. Je peux me désabonner à tout moment.">I agree to be contacted by SPUR by WhatsApp, SMS or email about my request. I can <a href="privacy.html" class="privacy-link-dyn" style="color:var(--gold);">unsubscribe</a> anytime.</label>
+            </div>
+            
+            <button type="submit" class="modal-capsule-btn" id="spurtanSubmitBtn" data-en="CLAIM FOUNDING ACCESS" data-fr="RÉCLAMER MON ACCÈS">CLAIM FOUNDING ACCESS</button>
+        </form>
+        <button class="modal-close" onclick="closeModals()" data-en="CANCEL" data-fr="ANNULER">CANCEL</button>
+    </div>
+</div>
+
+<!-- DEDICATED WAITLIST MODAL -->
+<div id="waitlistModal" class="modal-overlay" role="dialog" aria-modal="true" aria-labelledby="wlTitle">
+    <div class="modal-card">
+        <h3 id="wlTitle" class="dynamic-header" data-en="Join the Waitlist" data-fr="Rejoindre la liste d'attente">Join the Waitlist</h3>
+        <p class="dynamic-desc" data-en="SPUR is expanding. Secure your priority access." data-fr="SPUR s'agrandit. Sécurisez votre accès prioritaire.">SPUR is expanding. Secure your priority access.</p>
+        <form action="https://formspree.io/f/mjykllwj" method="POST" onsubmit="handleWaitlistSubmit(event)">
+            <input type="text" name="_gotcha" style="display:none" tabindex="-1" autocomplete="off">
+            <input type="hidden" name="dispatch_channel" value="Waitlist Registration">
+            <input type="hidden" name="request_id" class="requestIdField" value="">
+            <label for="wlName" class="sr-only" style="display:none;">First Name</label>
+            <input type="text" class="modal-input" name="client_name" id="wlName" placeholder="First Name" data-en-placeholder="First Name" data-fr-placeholder="Prénom" required>
+            <label for="wlEmail" class="sr-only" style="display:none;">Email</label>
+            <input type="email" class="modal-input" name="client_email" id="wlEmail" placeholder="Email Address" data-en-placeholder="Email Address" data-fr-placeholder="Adresse courriel" required>
+            
+            <label for="waitlistCitySelect" class="sr-only" style="display:none;">City</label>
+            <select class="modal-input" name="preferred_city" id="waitlistCitySelect" required onchange="toggleWaitlistOther(this)">
+                <option value="Montréal">Montréal</option>
+                <option value="Toronto">Toronto</option>
+                <option value="Other" data-en="Other" data-fr="Autre">Other</option>
+            </select>
+            <input type="text" class="modal-input" name="other_city" id="waitlistOtherCity" placeholder="Enter City" data-en-placeholder="Enter City" data-fr-placeholder="Entrez la ville" style="display:none;">
+            
+            <label for="wlSource" class="sr-only" style="display:none;">How did you hear about us?</label>
+            <select class="modal-input" name="referral_source" id="wlSource">
+                <option value="" disabled selected data-en="How did you hear about SPUR?" data-fr="Comment avez-vous entendu parler de SPUR ?">How did you hear about SPUR?</option>
+                <option value="Instagram">Instagram</option>
+                <option value="Friend" data-en="Friend" data-fr="Ami·e">Friend</option>
+                <option value="Barber" data-en="Barber" data-fr="Coiffeur·se">Barber</option>
+                <option value="Other" data-en="Other" data-fr="Autre">Other</option>
+            </select>
+            
+            <div class="consent-wrap">
+                <input type="checkbox" id="consentWaitlist" required>
+                <label for="consentWaitlist" data-en="I agree to be contacted by SPUR by WhatsApp, SMS or email about my request. I can unsubscribe anytime." data-fr="Je suis d'accord pour être contacté·e par SPUR par WhatsApp, SMS ou courriel au sujet de ma demande. Je peux me désabonner à tout moment.">I agree to be contacted by SPUR by WhatsApp, SMS or email about my request. I can <a href="privacy.html" class="privacy-link-dyn" style="color:var(--gold);">unsubscribe</a> anytime.</label>
+            </div>
+
+            <button type="submit" class="modal-capsule-btn" data-en="JOIN WAITLIST" data-fr="CONFIRMER L'INSCRIPTION">JOIN WAITLIST</button>
+        </form>
+        <button class="modal-close" onclick="closeModals()" data-en="CANCEL" data-fr="ANNULER">CANCEL</button>
+    </div>
+</div>
+
+<!-- SUCCESS SCREEN -->
+<div id="finalSuccessView" aria-live="assertive">
+    <div class="success-header-tag" id="receiptHeaderTag" data-en="Request received" data-fr="Demande reçue">Request received</div>
+    <div class="success-main-title" data-en="Request received." data-fr="Demande reçue.">Request received.</div>
+    <div class="success-sub-title" data-en="We are coordinating your specialist match." data-fr="Nous coordonnons votre spécialiste.">We are coordinating your specialist match.</div>
+    
+    <div class="success-receipt-card">
+        <div class="receipt-top-row">
+            <div>
+                <div class="receipt-title" data-en="Check your messages" data-fr="Vérifiez vos messages">Check your messages</div>
+                <div class="receipt-updates-tag" id="displayPhoneLine" data-en="CONCIERGE LINE: ACTIVE" data-fr="LIGNE CONCIERGE : ACTIVE">CONCIERGE LINE: ACTIVE</div>
+            </div>
+            <div class="receipt-price-box">
+                <div class="receipt-price" id="finalReceiptPrice">$49.99</div>
+                <div class="receipt-price-label" id="finalReceiptLabel" data-en="Final Total" data-fr="Total Final">Final Total</div>
+            </div>
+        </div>
+        <div class="receipt-grid">
+            <div class="receipt-grid-box"><div class="grid-box-val" id="receiptIdBox">SP-XXXX</div><div class="grid-box-lbl" data-en="Request ID" data-fr="ID Demande">Request ID</div></div>
+            <div class="receipt-grid-box"><div class="grid-box-val" id="receiptTargetArea">Vancouver</div><div class="grid-box-lbl" data-en="Location" data-fr="Lieu">Location</div></div>
+        </div>
+        <div class="receipt-footer-desc" data-en="Pay at the shop after your service, only once you feel ready." data-fr="Payez au salon après votre service, seulement une fois que vous vous sentez prêt·e.">Pay at the shop after your service, only once you feel ready.</div>
+        <a href="#" id="whatsappAutoBtn" class="receipt-action-btn" target="_blank" rel="noopener"><span data-en="💬 CONFIRM ON WHATSAPP" data-fr="💬 CONFIRMER SUR WHATSAPP">💬 CONFIRM ON WHATSAPP</span></a>
+        
+        <!-- VISIBLE WA NUMBER -->
+        <div style="text-align:center; font-size:11px; margin-top:8px; color:var(--text-muted);">
+            <span data-en="Or message us at " data-fr="Ou écrivez-nous au ">Or message us at </span> <strong style="color:var(--text-main);">+1 (438) 725-1010</strong>
+        </div>
+
+        <button onclick="returnToHome()" class="modal-capsule-btn-secondary" style="margin-top: 15px; border-color: transparent;" data-en="← BACK TO HOME" data-fr="← RETOUR À L'ACCUEIL">← BACK TO HOME</button>
+        
+        <div style="margin-top: 15px; font-size: 11px; color: var(--text-muted); text-align:center;">
+            <span data-en="Change of plans?" data-fr="Un changement de programme ?">Change of plans?</span> 
+            <a href="https://wa.me/14387251010" id="changePlansBtn" target="_blank" rel="noopener" style="color: var(--text-main); text-decoration: underline; font-weight: 600;">
+                <span data-en="Message Concierge." data-fr="Contactez le Concierge.">Message Concierge.</span>
+            </a>
+        </div>
+    </div>
+</div>
+
+<script>
+let currentCity='yvr';
+const SPUR_WHATSAPP_NUMBER='14387251010';
+const cityData = {
+    yvr: { enBadge: "CONCIERGE ONLINE", enOffline: "CONCIERGE OFFLINE", frBadge: "EN SERVICE", frOffline: "HORS SERVICE", areaName: "Vancouver", isLive: true, tz: "America/Vancouver" },
+    yul: { enBadge: "WAITLIST", frBadge: "LISTE D'ATTENTE", areaName: "Montréal", isLive: false, tz: "America/Toronto" },
+    yyz: { enBadge: "WAITLIST", frBadge: "LISTE D'ATTENTE", areaName: "Toronto", isLive: false, tz: "America/Toronto" }
+};
+const SUPABASE_URL='https://quqcgjkbvajcltwuoqvz.supabase.co';const SUPABASE_ANON_KEY='sb_publishable_h-5S_3VCTLKsN8iVUc_LxQ_T7rn1HlJ';
+const supabaseClient=window.supabase?window.supabase.createClient(SUPABASE_URL,SUPABASE_ANON_KEY):null;
+
+let activeFocusElement = null;
+
+// Tracking placeholder
+function track(name, props){
+    // e.g., window.dataLayer.push({event: name, ...props});
+}
+
+function generateRequestId() {
+    return 'SP-' + Math.random().toString(36).substr(2, 4).toUpperCase();
+}
+
+function normalizePhone(phone) {
+    let p = phone.replace(/\D/g, '');
+    if (p.length === 10) return '+1' + p;
+    return p;
+}
+
+function isPTHours(timezone){
+    try{
+        const now=new Date();
+        const ptString=now.toLocaleString("en-US",{timeZone:timezone || "America/Vancouver"});
+        const h=new Date(ptString).getHours();
+        return h>=9&&h<20;
+    }catch(e){return true;}
+}
+function returnToHome(){document.getElementById('finalSuccessView').style.display='none';document.getElementById('mainAppContainer').style.display='flex';window.scrollTo({top:0,behavior:'smooth'});}
+
+function toggleFaq(btn) {
+    const answer = btn.nextElementSibling;
+    const isExp = btn.getAttribute('aria-expanded') === 'true';
+    btn.setAttribute('aria-expanded', !isExp);
+    answer.style.display = isExp ? 'none' : 'block';
+    btn.querySelector('.faq-icon').textContent = isExp ? '+' : '−';
+    track('faq_open', {question: btn.firstElementChild.innerText});
+}
+
+function toggleWaitlistOther(sel) {
+    const el = document.getElementById('waitlistOtherCity');
+    if(sel.value === 'Other' || sel.value === 'Autre') {
+        el.style.display = 'block';
+        el.required = true;
+    } else {
+        el.style.display = 'none';
+        el.required = false;
+        el.value = '';
+    }
+}
+
+async function openHistoryModal(){
+    activeFocusElement = document.activeElement;
+    safeOpenModal('historyModal');
+    const historyContent=document.getElementById('historyContent');
+    const lang=localStorage.getItem('spur_lang')||'en';
+    let bookingsData=JSON.parse(localStorage.getItem('spur_history')||'[]');
+    if(bookingsData.length===0){
+        historyContent.innerHTML=`<div style="text-align:center; color: var(--text-muted); font-size: 12px; margin-top: 20px;">${lang==='fr'?"Aucune réservation passée trouvée sur cet appareil.":"No past bookings found on this device."}</div>`;
+        return;
+    }
+    let html='';
+    bookingsData.forEach(req=>{
+        const dateObj=new Date(req.date);
+        const formattedDate=dateObj.toLocaleDateString(lang==='fr'?'fr-CA':'en-CA',{month:'short',day:'numeric',year:'numeric'});
+        const btnTxt = lang==='fr'?"Réserver à nouveau":"Book again";
+        html+=`<div class="perks-mini-box" style="margin-bottom: 10px;">
+            <div style="display: flex; justify-content: space-between; margin-bottom: 6px;">
+                <strong style="color: var(--gold); font-size: 11px;">${formattedDate}</strong>
+                <span style="font-size: 10px; color: #2ecc71; font-weight: 700;">${(req.type||'now').toUpperCase()}</span>
+            </div>
+            <div style="font-size: 12px; color: var(--text-main); margin-bottom: 4px;">${req.service}</div>
+            <div style="font-size: 10px; color: var(--text-muted); margin-bottom: 8px;">📍 ${req.city}</div>
+            <button onclick="bookAgain()" style="background:transparent; border:1px solid var(--border-color); color:var(--gold); border-radius:12px; font-size:10px; padding:4px 8px; cursor:pointer;">${btnTxt}</button>
+        </div>`;
+    });
+    historyContent.innerHTML=html;
+}
+
+function bookAgain(){
+    closeModals();
+    track('book_again_click', {});
+    openIntercept('now');
+}
+
+async function checkReturningUserRealtime(){try{if(!supabaseClient)return;const savedPhone=localStorage.getItem('spur_user_phone');if(!savedPhone)return;const{data}=await supabaseClient.from('clients').select('name, last_specialist, spurtan_code').eq('phone',savedPhone).single();if(data){if(data.name)localStorage.setItem('spur_user_name',data.name);if(data.last_specialist)localStorage.setItem('last_specialist',data.last_specialist);let hasPastVisits=false;try{const{count}=await supabaseClient.from('requests').select('*',{count:'exact',head:true}).eq('phone',savedPhone);hasPastVisits=count&&count>0;}catch(e){}const localDiscountUsed=localStorage.getItem('spur_discount_used')==='true';if(data.spurtan_code&&!hasPastVisits&&!localDiscountUsed){localStorage.setItem('spur_applied_code',data.spurtan_code);}}}catch(err){}}
+
+async function syncClientToSupabase(name,phone,specialist){try{if(!supabaseClient)return;const appliedCode=localStorage.getItem('spur_applied_code')||null;const payload={phone:phone,name:name,last_specialist:specialist};if(appliedCode)payload.spurtan_code=appliedCode;await supabaseClient.from('clients').upsert(payload,{onConflict:'phone'});}catch(err){}}
+function switchModal(closeId,openId){document.getElementById(closeId).style.display='none';safeOpenModal(openId);}
+
+function setCity(city){
+    if(!cityData[city]) return;
+    currentCity=city;
+    
+    const select=document.getElementById('mainCitySelect');
+    if(select && select.value!==city) select.value=city;
+    
+    document.querySelectorAll('.formCityField').forEach(el=>el.value=cityData[city].areaName);
+    const waitlistCitySelect = document.getElementById('waitlistCitySelect');
+    if(waitlistCitySelect && !cityData[city].isLive) waitlistCitySelect.value=cityData[city].areaName;
+    
+    if(cityData[city].isLive) {
+        document.getElementById('activeBookingFlow').style.display='flex';
+        document.getElementById('waitlistFlow').style.display='none';
+    } else {
+        document.getElementById('activeBookingFlow').style.display='none';
+        document.getElementById('waitlistFlow').style.display='flex';
+    }
+    
+    updateBadgeText();
+    localStorage.setItem('spur_active_city',city);
+    track('city_selected', {city: cityData[city].areaName});
+}
+
+function updateBadgeText(){
+    const lang=localStorage.getItem('spur_lang')||'en';
+    const liveDot=document.getElementById('liveDotIndicator');
+    const badgeText=document.getElementById('liveBadgeText');
+    const hoursNote=document.getElementById('hoursNote');
+    
+    if(cityData[currentCity].isLive){
+        if(isPTHours(cityData[currentCity].tz)){
+            liveDot.className='live-dot';
+            badgeText.innerText=cityData[currentCity][lang==='fr'?'frBadge':'enBadge'];
+            if(hoursNote) {
+                hoursNote.style.display='block';
+                hoursNote.innerHTML = lang==='fr' ? "Heures : 9h00 – 20h00 (HP)" : "Hours: 9:00 AM – 8:00 PM (PT)";
+            }
+        }else{
+            liveDot.className='live-dot offline';
+            badgeText.innerText=cityData[currentCity][lang==='fr'?'frOffline':'enOffline'];
+            if(hoursNote) {
+                hoursNote.style.display='block';
+                hoursNote.innerHTML = lang==='fr' ? "Concierge hors ligne, de retour à 9h00 HP" : "Concierge offline, back at 9:00 AM PT";
+            }
+        }
+    }else{
+        liveDot.className='live-dot offline';
+        badgeText.innerText=cityData[currentCity][lang==='fr'?'frBadge':'enBadge'];
+        if(hoursNote) hoursNote.style.display='none';
+    }
+}
+
+function switchLanguage(lang){
+    document.getElementById('btn-en').classList.toggle('active',lang==='en');
+    document.getElementById('btn-fr').classList.toggle('active',lang==='fr');
+    document.documentElement.lang = lang === 'fr' ? 'fr-CA' : 'en-CA';
+    
+    document.querySelectorAll('.terms-link-dyn').forEach(el => el.href = lang === 'fr' ? 'terms-fr.html#guarantee' : 'terms.html#guarantee');
+    document.querySelectorAll('.privacy-link-dyn').forEach(el => el.href = lang === 'fr' ? 'privacy-fr.html' : 'privacy.html');
+    
+    const fTerms = document.getElementById('footerTermsLink');
+    if(fTerms) fTerms.href = lang === 'fr' ? 'terms-fr.html' : 'terms.html';
+    const fPriv = document.getElementById('footerPrivacyLink');
+    if(fPriv) fPriv.href = lang === 'fr' ? 'privacy-fr.html' : 'privacy.html';
+
+    document.querySelectorAll('[data-en]').forEach(el=>{
+        if(el.hasAttribute('data-fr')){
+            if (el.tagName === 'INPUT' || el.tagName === 'TEXTAREA') {
+                el.value = lang==='fr'?el.getAttribute('data-fr'):el.getAttribute('data-en');
+            } else {
+                el.innerHTML=lang==='fr'?el.getAttribute('data-fr'):el.getAttribute('data-en');
+            }
+        }
+    });
+    document.querySelectorAll('[data-en-placeholder]').forEach(el=>{
+        if(lang==='fr'&&el.hasAttribute('data-fr-placeholder')){
+            el.placeholder=el.getAttribute('data-fr-placeholder');
+        }else if(lang==='en'&&el.hasAttribute('data-en-placeholder')){
+            el.placeholder=el.getAttribute('data-en-placeholder');
+        }
+    });
+    const savedName=localStorage.getItem('spur_user_name');
+    if(savedName){
+        document.querySelectorAll('.dynamic-header').forEach(header=>{
+            if(header.textContent.includes('Welcome back')||header.textContent.includes('Bon retour')){
+                header.textContent=lang==='fr'?"Bon retour, "+savedName.split(' ')[0]:"Welcome back, "+savedName.split(' ')[0];
+            }
+        });
+    }
+    
+    const tzHintLater = document.getElementById('tzHintLater');
+    if(tzHintLater) {
+        tzHintLater.innerText = lang === 'fr' ? `Heures affichées à l'heure de ${cityData[currentCity].areaName}` : `Times shown in ${cityData[currentCity].areaName} time`;
+    }
+
+    localStorage.setItem('spur_lang',lang);
+    updateBadgeText();
+}
+
+let currentInterceptType='now';
+function openIntercept(type){
+    activeFocusElement = document.activeElement;
+    track(type === 'now' ? 'ready_now_click' : 'ready_later_click', {});
+    const lang=localStorage.getItem('spur_lang')||'en';
+    
+    if(!cityData[currentCity].isLive){
+        safeOpenModal('waitlistModal');
+        return;
+    }
+    
+    if(type==='now'&&currentCity==='yvr'&&!isPTHours(cityData[currentCity].tz)){
+        if(document.getElementById('laterModal')){
+            alert(lang==='fr'?"Le concierge est actuellement hors ligne. Redirection pour planifier votre visite pour demain.":"The concierge is currently offline. Redirecting to schedule your visit for tomorrow.");
+            type='later';
+        }else{
+            alert(lang==='fr'?"Le concierge est actuellement hors ligne. Veuillez revenir demain pour réserver votre place.":"The concierge is currently offline. Please check back tomorrow to secure a chair.");
+            return;
+        }
+    }
+    try{
+        currentInterceptType=type;
+        const savedSpecialist=localStorage.getItem('last_specialist');
+        const savedName=localStorage.getItem('spur_user_name');
+        if(savedName&&savedSpecialist&&savedSpecialist!=='Priority Match'&&savedSpecialist!=='undefined'){
+            document.getElementById('recognizedSpecialistText').textContent=lang==='fr'?`Demander ${savedSpecialist} à nouveau ?`:`Request ${savedSpecialist} again?`;
+            safeOpenModal('interceptModal');
+        }else{
+            safeOpenModal(type==='now'?'verifyModal':'laterModal');
+        }
+    }catch(err){safeOpenModal(type==='now'?'verifyModal':'laterModal');}
+}
+function confirmPreviousSpecialist(){const savedSpecialist=localStorage.getItem('last_specialist')||'Priority Match';document.querySelectorAll('.specialistHiddenField').forEach(el=>el.value=savedSpecialist);document.getElementById('interceptModal').style.display='none';safeOpenModal(currentInterceptType==='now'?'verifyModal':'laterModal');}
+function skipIntercept(){document.querySelectorAll('.specialistHiddenField').forEach(el=>el.value='Priority Match');document.getElementById('interceptModal').style.display='none';safeOpenModal(currentInterceptType==='now'?'verifyModal':'laterModal');}
+
+function safeOpenModal(id){
+    try{
+        const modal=document.getElementById(id);
+        if(!modal)return;
+        
+        document.querySelectorAll('.requestIdField').forEach(el => el.value = generateRequestId());
+        
+        if(id==='verifyModal'||id==='laterModal'){
+            const savedName=localStorage.getItem('spur_user_name');
+            const savedPhone=localStorage.getItem('spur_user_phone');
+            const contactFields=modal.querySelector('.contact-fields');
+            const resetBtn=id==='verifyModal'?document.getElementById('resetUserBtn'):document.getElementById('resetUserBtnLater');
+            const desc=modal.querySelector('.dynamic-desc');
+            const submitBtn=modal.querySelector('button[type="submit"]');
+            const lang=localStorage.getItem('spur_lang')||'en';
+            if(savedName&&savedPhone){
+                if(contactFields){contactFields.style.display='none';contactFields.querySelectorAll('input').forEach(i=>i.required=false);}
+                if(resetBtn)resetBtn.style.display='block';
+                const header=modal.querySelector('.dynamic-header');
+                if(header)header.textContent=lang==='fr'?"Bon retour, "+savedName.split(' ')[0]:"Welcome back, "+savedName.split(' ')[0];
+                if(desc)desc.textContent=lang==='fr'?"Profil sécurisé. Confirmez pour coordonner votre match.":"Profile secured. Confirm to coordinate your match.";
+                if(submitBtn){
+                    if(id==='verifyModal')submitBtn.textContent=lang==='fr'?"CONFIRMER LA DEMANDE":"CONFIRM REQUEST";
+                    else submitBtn.textContent=lang==='fr'?"CONFIRMER LA VISITE PLANIFIÉE":"CONFIRM SCHEDULED COMMITMENT";
+                }
+            }else{
+                if(contactFields){contactFields.style.display='block';contactFields.querySelectorAll('input').forEach(i=>i.required=true);}
+                if(resetBtn)resetBtn.style.display='none';
+                const header=modal.querySelector('.dynamic-header');
+                if(header)header.textContent=id==='verifyModal'?(lang==='fr'?"Préparez-vous Maintenant":"Get Ready Now"):(lang==='fr'?"Planifier à l'avance":"Plan Ahead");
+                if(desc){
+                    if(id==='verifyModal')desc.textContent=lang==='fr'?"Entrez vos coordonnées. Nous coordonnerons votre match.":"Enter your details. We will coordinate your match.";
+                    else desc.textContent=lang==='fr'?"Réservez l'heure qui vous convient. Nous coordonnerons la disponibilité.":"Book a time that works. We'll coordinate availability.";
+                }
+                if(submitBtn){
+                    if(id==='verifyModal')submitBtn.textContent=lang==='fr'?"ENVOYER LA DEMANDE":"SEND REQUEST";
+                    else submitBtn.textContent=lang==='fr'?"DEMANDER UNE VISITE PLANIFIÉE":"REQUEST SCHEDULED COMMITMENT";
+                }
+            }
+        }
+        modal.style.display='flex';
+        // Focus trap simple
+        const focusable = modal.querySelectorAll('button, [href], input, select, textarea, [tabindex]:not([tabindex="-1"])');
+        if(focusable.length) focusable[0].focus();
+    }catch(e){document.getElementById(id).style.display='flex';}
+}
+
+function resetUser(){
+    localStorage.removeItem('spur_user_name');
+    localStorage.removeItem('spur_user_phone');
+    localStorage.removeItem('last_specialist');
+    localStorage.removeItem('spur_applied_code');
+    // History stays
+    if(document.getElementById('laterModal')&&document.getElementById('laterModal').style.display==='flex'){
+        safeOpenModal('laterModal');
+    }else{
+        safeOpenModal('verifyModal');
+    }
+}
+
+function closeModals(){
+    document.querySelectorAll('.modal-overlay').forEach(el=>el.style.display='none');
+    if(activeFocusElement) activeFocusElement.focus();
+}
+
+window.addEventListener('keydown', function(event) {
+    if (event.key === 'Escape') {
+        closeModals();
+    }
+});
+
+async function handleSpurtanRegister(event){
+    event.preventDefault();
+    const lang=localStorage.getItem('spur_lang')||'en';
+    const form=event.target;
+    const name=form.querySelector('input[name="client_name"]').value;
+    const phone=normalizePhone(form.querySelector('input[name="client_phone"]').value);
+    const submitBtn=document.getElementById('spurtanSubmitBtn');
+    const ogText=submitBtn.textContent;
+    submitBtn.disabled=true;
+    submitBtn.textContent=lang==='fr'?"TRAITEMENT...":"PROCESSING...";
+    if(supabaseClient){
+        try{
+            const{count}=await supabaseClient.from('requests').select('*',{count:'exact',head:true}).eq('phone',phone);
+            if(count&&count>0){
+                alert(lang==='fr'?"Ce numéro a déjà un historique. Le tarif est valable uniquement pour la 1ère visite.":"This number has past visits. The Founding Spurtan rate is for first-time visits only.");
+                submitBtn.disabled=false;
+                submitBtn.textContent=ogText;
+                return;
+            }
+        }catch(e){}
+    }
+    localStorage.setItem('spur_user_name',name);
+    localStorage.setItem('spur_user_phone',phone);
+    localStorage.setItem('last_specialist','Priority Match');
+    localStorage.setItem('spur_applied_code','FOUNDER');
+    await syncClientToSupabase(name,phone,'Priority Match');
+    submitBtn.disabled=false;
+    submitBtn.textContent=ogText;
+    alert(lang==='fr'?"✓ Accès Spurtan Fondateur confirmé ! Votre tarif de 39,99 $ est actif pour votre première visite.":"✓ Founding Spurtan Access confirmed! Your $39.99 rate is active for your first visit.");
+    closeModals();
+    form.reset();
+}
+
+async function handleWaitlistSubmit(event){
+    event.preventDefault();
+    const form=event.target;
+    const lang=localStorage.getItem('spur_lang')||'en';
+    const submitBtn=form.querySelector('button[type="submit"]');
+    const ogText=submitBtn.textContent;
+    submitBtn.disabled=true;
+    submitBtn.textContent=lang==='fr'?"TRAITEMENT...":"PROCESSING...";
+    track('waitlist_join', {});
+    try{ 
+        const controller = new AbortController();
+        const timeoutId = setTimeout(() => controller.abort(), 10000);
+        await fetch(form.action,{method:'POST',body:new FormData(form),headers:{'Accept':'application/json'}, signal: controller.signal}); 
+        clearTimeout(timeoutId);
+    }catch(e){ track('form_error', {type: 'waitlist'}); }
+    submitBtn.disabled=false;
+    submitBtn.textContent=ogText;
+    alert(lang==='fr'?"✓ Inscription sur la liste d'attente confirmée !":"✓ Waitlist registration confirmed!");
+    closeModals();
+    form.reset();
+}
+
+async function handleCodeSubmit(event){
+    event.preventDefault();
+    const codeVal=document.getElementById('spurInput').value.trim().toUpperCase();
+    const lang=localStorage.getItem('spur_lang')||'en';
+    if(codeVal.length < 3){
+        alert(lang==='fr'?"Veuillez entrer un code valide.":"Please enter a valid code.");
+        return;
+    }
+    if(localStorage.getItem('spur_discount_used')==='true'){
+        alert(lang==='fr'?"Le tarif fondateur est valable uniquement pour votre première visite.":"The Founding Spurtan rate is valid for your first visit only.");
+        return;
+    }
+    localStorage.setItem('spur_applied_code',codeVal);
+    track('code_applied', {code: codeVal});
+    alert(lang==='fr'?"✓ Code reçu. Votre concierge confirmera votre tarif.":"✓ Code received. Your concierge will confirm your price.");
+    closeModals();
+    event.target.reset();
+}
+
+function handleFetchError(lang, waUrl) {
+    track('form_error', {type: 'booking'});
+    alert(lang==='fr' ? "Un problème est survenu. Appuyez pour nous écrire sur WhatsApp." : "Something went wrong. Tap to message us on WhatsApp.");
+    window.location.href = waUrl;
+}
+
+async function handleSubmit(event,type){
+    event.preventDefault();
+    const form=event.target;
+    const lang=localStorage.getItem('spur_lang')||'en';
+    
+    const lastSub=localStorage.getItem('spur_last_submit');
+    if(lastSub&&(Date.now()-parseInt(lastSub))<2*60*1000){
+        alert(lang==='fr'?"Demande déjà reçue. Veuillez patienter un instant avant de réserver à nouveau.":"Request already received. Please wait 2 minutes before booking again.");
+        return;
+    }
+    
+    let name=localStorage.getItem('spur_user_name');
+    let phone=localStorage.getItem('spur_user_phone');
+    const nameInput=form.querySelector('input[name="client_name"]');
+    const phoneInput=form.querySelector('input[name="client_phone"]');
+    
+    const dateInput = form.querySelector('input[name="requested_date"]');
+    const timeInput = form.querySelector('select[name="requested_time"]');
+    const reqDate = dateInput ? dateInput.value : '';
+    const reqTime = timeInput ? timeInput.value : '';
+    const reqId = form.querySelector('.requestIdField').value || generateRequestId();
+    
+    if(nameInput&&nameInput.value.trim()){name=nameInput.value.trim();localStorage.setItem('spur_user_name',name);}
+    if(phoneInput&&phoneInput.value.trim()){phone=normalizePhone(phoneInput.value.trim());localStorage.setItem('spur_user_phone',phone);}
+    if(!name)name='Valued Client';
+    if(!phone || phone.length < 10){
+        alert(lang==='fr'?'Veuillez entrer un numéro de téléphone valide.':'Please enter a valid mobile number.');
+        return;
+    }
+    
+    localStorage.setItem('spur_last_submit',Date.now().toString());
+    
+    const submitBtn=form.querySelector('button[type="submit"]');
+    if(submitBtn){submitBtn.disabled=true;submitBtn.style.opacity='0.7';submitBtn.textContent=lang==='fr'?"COORDINATION EN COURS...":"COORDINATING MATCH...";}
+    
+    const city=form.querySelector('.formCityField').value;
+    const specialist=form.querySelector('input[name="requested_specialist"]')?.value||'Priority Match';
+    const occasion="Standard Refresh"; // Locked for SpurReady
+    
+    let finalPrice=49.99;
+    let serviceRequested="SPUR Refresh";
+    let hasCode=localStorage.getItem('spur_applied_code')!==null;
+    
+    if(hasCode){
+        if(supabaseClient){
+            try{
+                const{count}=await supabaseClient.from('requests').select('*',{count:'exact',head:true}).eq('phone',phone);
+                if(count&&count>0){
+                    hasCode=false;
+                    localStorage.removeItem('spur_applied_code');
+                    localStorage.setItem('spur_discount_used','true');
+                    alert(lang==='fr'?"Note : Le tarif Fondateur est réservé à votre première visite. Votre total sera le tarif fixe prioritaire (49,99 $).":"Note: The Founding Spurtan rate applies to your first visit only. Your total will be the Priority Flat Rate ($49.99).");
+                }
+            }catch(e){}
+        }
+        if(hasCode) finalPrice=39.99;
+    }
+    
+    if(document.getElementById('finalReceiptPrice')) document.getElementById('finalReceiptPrice').textContent=`$${finalPrice.toFixed(2)}`;
+    if(document.getElementById('finalReceiptLabel')) document.getElementById('finalReceiptLabel').textContent = hasCode ? (lang==='fr'?"Tarif Fondateur":"Founding Price") : (lang==='fr'?"Total Final":"Final Total");
+    if(document.getElementById('receiptIdBox')) document.getElementById('receiptIdBox').textContent = reqId;
+    
+    localStorage.setItem('last_specialist',specialist);
+    
+    let historyDate = new Date().toISOString();
+    if(type === 'later' && reqDate) {
+        historyDate = new Date(reqDate).toISOString();
+    }
+    
+    const newBooking={date:historyDate,type:type,service:serviceRequested,city:city};
+    let localHistory=JSON.parse(localStorage.getItem('spur_history')||'[]');
+    localHistory.unshift(newBooking);
+    localStorage.setItem('spur_history',JSON.stringify(localHistory.slice(0,5)));
+    
+    await syncClientToSupabase(name,phone,specialist);
+    
+    try{if(supabaseClient)await supabaseClient.from('requests').insert({phone,city,type,specialist,occasion,service:serviceRequested,price:finalPrice});}catch(err){}
+    
+    let waMessage = "";
+    if (lang === 'fr') {
+        const typeText = type === 'now' ? 'PRÊT MAINTENANT' : 'VISITE PLANIFIÉE';
+        waMessage = `Bonjour SPUR — Je souhaite demander une visite.\n\nID Demande: ${reqId}\nType: ${typeText}\n`;
+        if (type === 'later' && reqDate && reqTime) { waMessage += `Date: ${reqDate}\nHeure: ${reqTime}\n`; }
+        waMessage += `Ville: ${city}\nNom: ${name}\nMobile: ${phone}\nOccasion: ${occasion}\n\nService: ${serviceRequested}\nSpécialiste: ${specialist}\n\nVeuillez coordonner la disponibilité vérifiée.`;
+    } else {
+        const typeText = type === 'now' ? 'READY NOW' : 'SCHEDULED LATER';
+        waMessage = `Hello SPUR — I would like to request a visit.\n\nReq ID: ${reqId}\nType: ${typeText}\n`;
+        if (type === 'later' && reqDate && reqTime) { waMessage += `Date: ${reqDate}\nTime: ${reqTime}\n`; }
+        waMessage += `City: ${city}\nName: ${name}\nMobile: ${phone}\nOccasion: ${occasion}\n\nService: ${serviceRequested}\nSpecialist: ${specialist}\n\nPlease coordinate verified availability.`;
+    }
+    
+    const encodedWaUrl = `https://wa.me/${SPUR_WHATSAPP_NUMBER}?text=${encodeURIComponent(waMessage)}`;
+    if(document.getElementById('whatsappAutoBtn')) document.getElementById('whatsappAutoBtn').href = encodedWaUrl;
+    
+    const changePlansBtn = document.getElementById('changePlansBtn');
+    if(changePlansBtn) {
+        if (lang === 'fr') {
+            changePlansBtn.href = `https://wa.me/${SPUR_WHATSAPP_NUMBER}?text=Bonjour%20SPUR%20%E2%80%94%20Je%20dois%20modifier%20ma%20r%C3%A9cente%20demande%20(${reqId}).`;
+        } else {
+            changePlansBtn.href = `https://wa.me/${SPUR_WHATSAPP_NUMBER}?text=Hello%20SPUR%20%E2%80%94%20I%20need%20to%20modify%20my%20recent%20request%20(${reqId}).`;
+        }
+    }
+    
+    track('form_submit', {type: type});
+    
+    try{
+        const controller = new AbortController();
+        const timeoutId = setTimeout(() => controller.abort(), 10000);
+        const res = await fetch(form.action,{method:'POST',body:new FormData(form),headers:{'Accept':'application/json'}, signal: controller.signal});
+        clearTimeout(timeoutId);
+        if(!res.ok) throw new Error("Fetch failed");
+    }catch(e){
+        handleFetchError(lang, encodedWaUrl);
+        if(submitBtn){submitBtn.disabled=false;submitBtn.style.opacity='1';submitBtn.textContent=lang==='fr'?"RÉESSAYER":"TRY AGAIN";}
+        return; // Halt success screen
+    }
+    
+    const phoneLineTag=document.getElementById('displayPhoneLine');
+    if(phoneLineTag) {
+        if(isPTHours(cityData[currentCity].tz)){
+            phoneLineTag.textContent=lang==='fr'?'LIGNE CONCIERGE : ACTIVE':'CONCIERGE LINE: ACTIVE';
+            phoneLineTag.style.color='var(--gold)';
+        }else{
+            phoneLineTag.textContent=lang==='fr'?'LIGNE CONCIERGE : HORS LIGNE':'CONCIERGE LINE: OFFLINE';
+            phoneLineTag.style.color='#7f8c8d';
+        }
+    }
+    
+    setTimeout(()=>{
+        closeModals();
+        document.getElementById('mainAppContainer').style.display='none';
+        document.getElementById('finalSuccessView').style.display='block';
+        if(submitBtn){submitBtn.disabled=false;submitBtn.style.opacity='1';}
+        window.scrollTo({top:0,behavior:'smooth'});
+    },1200);
+}
+
+// Rotation logic
+let currentHook = 0;
+setInterval(() => {
+    const hooks = document.querySelectorAll('.rotating-text');
+    if(!hooks.length) return;
+    hooks[currentHook].classList.remove('active');
+    currentHook = (currentHook + 1) % hooks.length;
+    hooks[currentHook].classList.add('active');
+}, 4000);
+
+// Sticky CTA logic
+window.addEventListener('scroll', () => {
+    const sticky = document.getElementById('stickyCta');
+    const hero = document.querySelector('.hero-section');
+    if(!sticky || !hero) return;
+    if(window.scrollY > hero.offsetTop + hero.offsetHeight) {
+        sticky.classList.add('show');
+    } else {
+        sticky.classList.remove('show');
+    }
+});
+
+window.addEventListener('DOMContentLoaded',async()=>{
+    try{
+        // Default Lang by Browser (starts with fr -> fr, else en)
+        let storedLang = localStorage.getItem('spur_lang');
+        if(!storedLang) {
+            const browserLang = navigator.language || navigator.userLanguage;
+            storedLang = browserLang.toLowerCase().startsWith('fr') ? 'fr' : 'en';
+        }
+        
+        // URL Override
+        const urlParams = new URLSearchParams(window.location.search);
+        if(urlParams.get('lang') === 'fr' || urlParams.get('lang') === 'en') {
+            storedLang = urlParams.get('lang');
+        }
+
+        const today=new Date().toISOString().split('T')[0];
+        const dateInput=document.getElementById('laterDateInput');
+        if(dateInput){
+            dateInput.min=today;
+            const maxDate = new Date();
+            maxDate.setDate(maxDate.getDate() + 14);
+            dateInput.max=maxDate.toISOString().split('T')[0];
+        }
+        
+        document.querySelectorAll('input[type="tel"]').forEach(input=>{input.addEventListener('input',function(){this.value=this.value.replace(/\D/g,'').slice(0,10);});});
+        
+        setCity(localStorage.getItem('spur_active_city')||'yvr');
+        switchLanguage(storedLang);
+        
+        await checkReturningUserRealtime();
+        
+        const savedName=localStorage.getItem('spur_user_name');
+        if(savedName){
+            document.querySelectorAll('.dynamic-header').forEach(header=>{
+                if(header.textContent.includes('Welcome back')||header.textContent.includes('Bon retour')){
+                    header.textContent=storedLang==='fr'?"Bon retour, "+savedName.split(' ')[0]:"Welcome back, "+savedName.split(' ')[0];
+                }
+            });
+        }
+        
+        setInterval(updateBadgeText,60000);
+    }catch(e){}
+});
+</script>
+</body>
+</html>
