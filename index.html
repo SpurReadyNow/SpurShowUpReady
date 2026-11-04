@@ -119,7 +119,7 @@ label input:not([type=checkbox]),label select{display:block;width:100%;min-heigh
 
 <section id="how">
 <h2 data-i="std"></h2>
-<p class="mu" data-i="intro"></p>
+<p class="mu" data-i="intro" style="font-size: 1.05rem; color: var(--gold); margin-bottom: 24px;"></p>
 <ol>
 <li><b data-i="s1t"></b><span data-i="s1d"></span></li>
 <li><b data-i="s2t"></b><span data-i="s2d"></span></li>
@@ -138,6 +138,9 @@ label input:not([type=checkbox]),label select{display:block;width:100%;min-heigh
 </section>
 
 <footer>
+<div style="margin-bottom: 24px;">
+  <span class="logo" role="img" aria-label="SPUR">SPUR<svg class="st" viewBox="0 0 24 24" aria-hidden="true"><path d="M12 0c.8 6.6 5.4 11.2 12 12-6.6.8-11.2 5.4-12 12-.8-6.6-5.4-11.2-12-12C6.6 11.2 11.2 6.6 12 0z"/></svg></span>
+</div>
 <p><a href="#how" data-i="how"></a> · <button class="lnk" id="bk" data-i="bk"></button> · <a id="tl" href="terms.html" data-i="terms"></a> · <a id="pl" href="privacy.html" data-i="privacy"></a> · <a href="https://instagram.com/spur.readynow" rel="noopener">Instagram</a><span id="em"></span></p>
 <p id="cp"></p>
 </footer>
@@ -194,7 +197,8 @@ guar:['Not ready? We redo it free. Still not happy? Full refund.','Pas prêt ? O
 nowd:['A SPUR Specialist assesses what you need. You just show up.','Un spécialiste SPUR évalue vos besoins. Vous n’avez qu’à vous présenter.'],
 laterd:['Book a time that works. We’ll coordinate availability.','Réservez un moment qui vous convient. Nous coordonnons la disponibilité.'],
 code:['Have a Spurtan code?','Un code Spurtan ?'],wait:['Join the waitlist','Liste d’attente'],
-std:['The SPUR Standard','La norme SPUR'],intro:['We don’t look at menus. We look at you.','On ne regarde pas les menus. On vous regarde.'],
+std:['The SPUR Standard','La norme SPUR'],
+intro:['We don’t look at menus. We look at you.','Zéro carte. Juste vous.'],
 s1t:['WE FIND YOUR SPECIALIST','NOUS TROUVONS VOTRE SPÉCIALISTE'],s1d:['We find a specialist near you. You go to them.','Nous trouvons un spécialiste près de vous. Vous vous rendez chez lui.'],
 s2t:['THE MATCH','LE JUMELAGE'],s2d:['We connect you with an appropriate available specialist.','Nous vous mettons en relation avec un spécialiste approprié et disponible.'],
 s3t:['THE CONSULTATION','LA CONSULTATION'],s3d:['Your specialist assesses and recommends. You approve.','Votre spécialiste évalue et recommande. Vous approuvez.'],
@@ -236,7 +240,11 @@ let lastSp='',L='en',city='Vancouver',mode='now',code='',found=false,last={},oi=
 // Language initialization
 try{L=localStorage.getItem('spurL')||''}catch(e){}
 if(!L)L=(navigator.language||'').toLowerCase().startsWith('fr')?'fr':'en';
-const fr=()=>L=='fr',t=k=>T[k][fr()?1:0];
+const fr=()=>L=='fr';
+
+// Bulletproof translation function to prevent fatal JS crashes
+const t=k=>(T[k] ? T[k][fr()?1:0] : k);
+
 const money=n=>fr()?n.toFixed(2).replace('.',',')+' $':'$'+n.toFixed(2);
 const track=(n,p)=>{try{window.plausible&&window.plausible(n,{props:p})}catch(e){}};
 const rm=matchMedia('(prefers-reduced-motion:reduce)').matches;
@@ -244,47 +252,81 @@ const rm=matchMedia('(prefers-reduced-motion:reduce)').matches;
 function hhmm(h){return fr()?h+' h 00':((h+11)%12+1)+':00 '+(h<12?'AM':'PM')}
 
 function apply(){
-document.documentElement.lang=fr()?'fr-CA':'en-CA';
-$$('[data-i]').forEach(e=>{if(e)e.textContent=t(e.dataset.i)});
-$$('[data-p]').forEach(e=>{if(e)e.placeholder=t(e.dataset.p)});
+  document.documentElement.lang=fr()?'fr-CA':'en-CA';
+  
+  // Safely populate translations to avoid crashing
+  $$('[data-i]').forEach(e=>{
+    if(e) {
+      const val = t(e.dataset.i);
+      if(val !== undefined) e.textContent = val;
+    }
+  });
+  $$('[data-p]').forEach(e=>{
+    if(e) {
+      const val = t(e.dataset.p);
+      if(val !== undefined) e.placeholder = val;
+    }
+  });
 
-$('#price').textContent=money(49.99)+(fr()?' tarif fixe':' flat')+' · '+CFG.tax[L];
+  const elPrice = $('#price'); 
+  if (elPrice) elPrice.textContent = money(49.99)+(fr()?' tarif fixe':' flat')+' · '+CFG.tax[L];
 
-const p=[];if(CFG.matchTime)p.push(fr()?'Jumelé à un spécialiste près de vous en '+CFG.matchTime+'.':'Matched with a specialist near you in '+CFG.matchTime+'.');
-if(CFG.hoods)p.push(fr()?'Maintenant à Vancouver, en commençant par '+CFG.hoods+'.':'Now live in Vancouver, starting in '+CFG.hoods+'.');if(!CFG.live.includes(city)){p.length=0;p.push(t('nextc'))}
-$('#match').textContent=p.join(' ');
-if(CFG.hoods)$('#a2').textContent+=fr()?' Lancement à '+CFG.hoods+', Vancouver.':' Launching in '+CFG.hoods+', Vancouver.';
-$('#a3').textContent+=' '+CFG.tax[L];
-$('#a5').textContent+=' '+CFG.noShow[L];
-$('#ns').textContent=CFG.noShow[L];
-$('#spots').textContent=CFG.spots?(fr()?CFG.spots+' places fondateur restantes à Vancouver':CFG.spots+' founding spots left in Vancouver'):'';
+  const p=[];
+  if(CFG.matchTime) p.push(fr()?'Jumelé à un spécialiste près de vous en '+CFG.matchTime+'.':'Matched with a specialist near you in '+CFG.matchTime+'.');
+  if(CFG.hoods) p.push(fr()?'Maintenant à Vancouver, en commençant par '+CFG.hoods+'.':'Now live in Vancouver, starting in '+CFG.hoods+'.');
+  if(!CFG.live.includes(city)){p.length=0;p.push(t('nextc'))}
+  
+  const elMatch = $('#match'); if(elMatch) elMatch.textContent = p.join(' ');
+  
+  // Safely update FAQ appended strings
+  const elA2 = $('#a2'); if(elA2) elA2.textContent = t('a2') + (CFG.hoods ? (fr() ? ' Lancement à '+CFG.hoods+', Vancouver.' : ' Launching in '+CFG.hoods+', Vancouver.') : '');
+  const elA3 = $('#a3'); if(elA3) elA3.textContent = t('a3') + ' ' + CFG.tax[L];
+  const elA5 = $('#a5'); if(elA5) elA5.textContent = t('a5') + ' ' + CFG.noShow[L];
+  const elNs = $('#ns'); if(elNs) elNs.textContent = CFG.noShow[L];
+  
+  const elSpots = $('#spots'); 
+  if(elSpots) elSpots.textContent = CFG.spots?(fr()?CFG.spots+' places fondateur restantes à Vancouver':CFG.spots+' founding spots left in Vancouver'):'';
 
-// Built with isolated gap and styled "Just for me"
-$('#occ2').innerHTML='<option value="">—</option>'+OCC.map((o,i)=>{
-  if(i===0) return '<option value="" disabled>—</option><option value="'+o[0]+'" style="color:var(--gold);font-weight:500">'+o[fr()?1:0]+'</option><option value="" disabled>—</option>';
-  return '<option value="'+o[0]+'">'+o[fr()?1:0]+'</option>';
-}).join('');
+  // Built with isolated gap and styled "Just for me"
+  const eOcc2 = $('#occ2');
+  if(eOcc2) {
+    eOcc2.innerHTML='<option value="">—</option>'+OCC.map((o,i)=>{
+      if(i===0) return '<option disabled>—</option><option value="'+o[0]+'" style="color:var(--gold);font-weight:600">'+o[fr()?1:0]+'</option><option disabled>—</option>';
+      return '<option value="'+o[0]+'">'+o[fr()?1:0]+'</option>';
+    }).join('');
+  }
 
-$('#ref').innerHTML=REF.map(r=>'<option value="'+r[0]+'">'+r[fr()?2:1]+'</option>').join('');
+  const eRef = $('#ref'); 
+  if(eRef) eRef.innerHTML=REF.map(r=>'<option value="'+r[0]+'">'+r[fr()?2:1]+'</option>').join('');
 
-// Explicitly calling render elements for services
-$('#tiers').innerHTML=TIERS.map(x=>'<div class="tc"><b>SPUR '+x[1]+'™</b><span class="mu sm">'+x[2]+' min</span><strong>'+money(x[3])+'</strong><span class="sm">'+t(x[0])+'</span></div>').join('');
-$('#tier').innerHTML=[1,0,2].map(i=>TIERS[i]).map(x=>'<option value="'+x[0]+'">SPUR '+x[1]+'™ · '+x[2]+' min · '+money(x[3])+'</option>').join('')+'<option value="unsure">'+t('unsure')+'</option>';
-$('#tm').innerHTML=Array.from({length:12},(_,i)=>'<option value="'+hhmm(i+9)+'">'+hhmm(i+9)+'</option>').join('');
+  // Explicitly calling render elements for services safely
+  const eTiers = $('#tiers');
+  if(eTiers) eTiers.innerHTML=TIERS.map(x=>'<div class="tc"><b>SPUR '+x[1]+'™</b><span class="mu sm">'+x[2]+' min</span><strong>'+money(x[3])+'</strong><span class="sm">'+t(x[0])+'</span></div>').join('');
+  
+  const eTier = $('#tier');
+  if(eTier) eTier.innerHTML=[1,0,2].map(i=>TIERS[i]).map(x=>'<option value="'+x[0]+'">SPUR '+x[1]+'™ · '+x[2]+' min · '+money(x[3])+'</option>').join('')+'<option value="unsure">'+t('unsure')+'</option>';
+  
+  const eTm = $('#tm');
+  if(eTm) eTm.innerHTML=Array.from({length:12},(_,i)=>'<option value="'+hhmm(i+9)+'">'+hhmm(i+9)+'</option>').join('');
 
-const tl=fr()&&CFG.frLegal?'-fr':'';
-$('#tl').href='terms'+tl+'.html';
-$('#pl').href='privacy'+tl+'.html';
-$('#gl').href='terms'+tl+'.html#guarantee';
-$('#lg2').innerHTML=fr()?'En envoyant, vous acceptez les <a href="terms'+tl+'.html">Conditions</a> et la <a href="privacy'+tl+'.html">Politique de confidentialité</a>.':'By submitting you agree to the <a href="terms.html">Terms</a> and <a href="privacy.html">Privacy Policy</a>.';
-$('#em').innerHTML=CFG.email?' · <a href="mailto:'+CFG.email+'">'+(fr()?'Nous joindre':'Contact')+'</a>':'';
-$('#cp').textContent='© 2026 '+(CFG.entity||'SPUR');
-$('#lg').innerHTML=fr()?'EN | <b>FR</b>':'<b>EN</b> | FR';
-$('#tzn').textContent=(fr()?'Heures affichées à l’heure de ':'Times shown in ')+city+(fr()?'':' time');
-$('#city-sel').value = city;
+  const tl = fr()&&CFG.frLegal?'-fr':'';
+  const eTl = $('#tl'); if(eTl) eTl.href='terms'+tl+'.html';
+  const ePl = $('#pl'); if(ePl) ePl.href='privacy'+tl+'.html';
+  const eGl = $('#gl'); if(eGl) eGl.href='terms'+tl+'.html#guarantee';
+  
+  const eLg2 = $('#lg2'); 
+  if(eLg2) eLg2.innerHTML = fr()?'En envoyant, vous acceptez les <a href="terms'+tl+'.html">Conditions</a> et la <a href="privacy'+tl+'.html">Politique de confidentialité</a>.':'By submitting you agree to the <a href="terms.html">Terms</a> and <a href="privacy.html">Privacy Policy</a>.';
+  
+  const eEm = $('#em'); if(eEm) eEm.innerHTML=CFG.email?' · <a href="mailto:'+CFG.email+'">'+(fr()?'Nous joindre':'Contact')+'</a>':'';
+  const eCp = $('#cp'); if(eCp) eCp.textContent='© 2026 '+(CFG.entity||'SPUR');
+  const eLg = $('#lg'); if(eLg) eLg.innerHTML=fr()?'EN | <b>FR</b>':'<b>EN</b> | FR';
+  const eTzn = $('#tzn'); if(eTzn) eTzn.textContent=(fr()?'Heures affichées à l’heure de ':'Times shown in ')+city+(fr()?'':' time');
+  
+  const eCitySel = $('#city-sel');
+  if(eCitySel) eCitySel.value = city;
 
-if(!rm||!$('#occ').textContent)rot(true);
-status();
+  if(!rm||!$('#occ').textContent)rot(true);
+  status();
 }
 
 function rot(init){const e=$('#occ');if(init&&oi>=0)e.textContent=OCCL[fr()?1:0][oi%3]}
@@ -372,7 +414,7 @@ const d0=new Date(),iso=d=>new Date(d-d.getTimezoneOffset()*6e4).toISOString().s
 $('#dt').min=iso(d0);$('#dt').max=iso(new Date(d0.getTime()+14*864e5));
 if('IntersectionObserver'in window)new IntersectionObserver(([e])=>$('#bar').classList.toggle('show',!e.isIntersecting)).observe($('#ctas'));
 
-// Start the rendering
+// Safely execute the startup script
 apply();
 </script>
 </body>
