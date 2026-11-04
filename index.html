@@ -49,9 +49,13 @@ h1{font-size:clamp(3rem,13vw,6rem);line-height:.95;letter-spacing:.02em}
 .pr{font-size:1.2rem;font-weight:600;margin:0}
 .gu{margin:6px 0 20px;font-size:.9rem}
 .occ{min-height:1.6em;font-family:'Cormorant Garamond',serif;font-size:1.25rem;color:var(--gold);transition:opacity .4s;margin:0 0 20px}
-.cities{display:flex;gap:8px;justify-content:center;flex-wrap:wrap;margin:8px 0}
-.city{min-height:44px;padding:0 18px;border-radius:999px;border:1px solid var(--ln);background:none;cursor:pointer}
-.city[aria-pressed=true]{border-color:var(--gold);color:var(--gold)}
+
+/* Clean City Dropdown */
+#city-sel-w{position:relative;max-width:340px;margin:0 auto 16px}
+#city-sel-w::after{content:"▼";font-size:.7rem;color:var(--mu);position:absolute;right:16px;top:50%;transform:translateY(-50%);pointer-events:none}
+#city-sel{appearance:none;background:#0f0f0f;border:1px solid var(--ln);color:var(--tx);padding:0 32px 0 16px;min-height:48px;border-radius:12px;font-size:16px;width:100%;display:block;cursor:pointer;text-align:center;font-family:inherit}
+#city-sel:focus{outline:2px solid var(--gold);outline-offset:2px;border-color:var(--gold)}
+
 .ctas{display:grid;gap:12px;margin:18px auto 6px;max-width:460px}
 .ctas .btn{display:flex;flex-direction:column;gap:2px;text-align:center}
 .ctas small{font-weight:400;letter-spacing:0;opacity:.85}
@@ -88,19 +92,23 @@ label input:not([type=checkbox]),label select{display:block;width:100%;min-heigh
 <p class="tag" data-i="tag"></p>
 <h1>SHOW UP READY.</h1>
 <p class="sub" data-i="sub"></p>
+<p class="mu" data-i="expl" style="margin: 8px auto 20px; max-width: 48ch; line-height: 1.55;"></p>
 <p class="pr" id="price"></p>
 <p class="gu"><a id="gl" href="terms.html#guarantee" data-i="guar"></a></p>
 <p class="occ" id="occ" aria-hidden="true"></p>
-<p class="mu sm" data-i="city" id="cl"></p>
-<div class="cities" role="group" aria-labelledby="cl">
-<button class="city" data-c="Vancouver" aria-pressed="true">Vancouver</button>
-<button class="city" data-c="Montréal" aria-pressed="false">Montréal</button>
-<button class="city" data-c="Toronto" aria-pressed="false">Toronto</button>
+
+<div id="city-sel-w">
+  <select id="city-sel" aria-label="Select your city">
+    <option value="Vancouver" data-i="cv"></option>
+    <option value="Montréal" data-i="cm"></option>
+    <option value="Toronto" data-i="ct"></option>
+  </select>
 </div>
+
 <p class="mu sm" id="match"></p>
-<div class="ctas" id="ctas">
+<div class="ctas" id="ctas" style="gap: 8px;">
 <button class="btn p" id="now">READY NOW™<small data-i="nowd"></small></button>
-<button class="btn" id="later">READY LATER™<small data-i="laterd"></small></button>
+<button class="lnk" id="later" style="font-weight: 500; font-size: 0.9rem; margin-top: 4px;">READY LATER™</button>
 </div>
 <p id="spots" class="sm" style="color:var(--gold)"></p>
 <p><button class="lnk" id="cd" data-i="code"></button><button class="lnk" id="wl" data-i="wait"></button></p>
@@ -178,8 +186,11 @@ const TZ={Vancouver:'America/Vancouver','Montréal':'America/Toronto',Toronto:'A
 const T={
 badge:['Founding Spurtan · first Refresh $39.99','Spurtan fondateur · première Refresh 39,99 $'],tag:['THE READINESS COMPANY','L’ENTREPRISE DE PRÉPARATION'],
 sub:['Cut. Shape. Finish. Done right before the moment that matters.','Coupe. Forme. Finition. Bien fait, juste avant le moment qui compte.'],
+expl:['SPUR connects you with a local specialist. They assess, recommend and you approve.','SPUR vous met en relation avec un spécialiste local. Il évalue, recommande et vous approuvez.'],
+cv:['Vancouver — Yaletown service area','Vancouver — Zone de service Yaletown'],
+cm:['Montréal — Join the waitlist','Montréal — Joindre la liste d’attente'],
+ct:['Toronto — Join the waitlist','Toronto — Joindre la liste d’attente'],
 guar:['Not ready? We redo it free. Still not happy? Full refund.','Pas prêt ? On refait gratuitement. Toujours pas satisfait ? Remboursement complet.'],
-city:['Select your city','Choisissez votre ville'],
 nowd:['A SPUR Specialist assesses what you need. You just show up.','Un spécialiste SPUR évalue vos besoins. Vous n’avez qu’à vous présenter.'],
 laterd:['Book a time that works. We’ll coordinate availability.','Réservez un moment qui vous convient. Nous coordonnons la disponibilité.'],
 code:['Have a Spurtan code?','Un code Spurtan ?'],wait:['Join the waitlist','Liste d’attente'],
@@ -237,7 +248,12 @@ if(CFG.hoods)p.push(fr()?'Maintenant à Vancouver, en commençant par '+CFG.hood
 $('#match').textContent=p.join(' ');
 if(CFG.hoods)$('#a2').textContent+=fr()?' Lancement à '+CFG.hoods+', Vancouver.':' Launching in '+CFG.hoods+', Vancouver.';$('#a3').textContent+=' '+CFG.tax[L];$('#a5').textContent+=' '+CFG.noShow[L];$('#ns').textContent=CFG.noShow[L];
 $('#spots').textContent=CFG.spots?(fr()?CFG.spots+' places fondateur restantes à Vancouver':CFG.spots+' founding spots left in Vancouver'):'';
-$('#occ2').innerHTML='<option value="">—</option>'+OCC.map(o=>'<option value="'+o[0]+'">'+o[fr()?1:0]+'</option>').join('');
+
+$('#occ2').innerHTML='<option value="">—</option>'+OCC.map((o,i)=>{
+  if(i===0) return '<option value="" disabled>—</option><option value="'+o[0]+'" style="color:var(--gold);font-weight:500">'+o[fr()?1:0]+'</option><option value="" disabled>—</option>';
+  return '<option value="'+o[0]+'">'+o[fr()?1:0]+'</option>';
+}).join('');
+
 $('#ref').innerHTML=REF.map(r=>'<option value="'+r[0]+'">'+r[fr()?2:1]+'</option>').join('');
 $('#tiers').innerHTML=TIERS.map(x=>'<div class="tc"><b>SPUR '+x[1]+'™</b><span class="mu sm">'+x[2]+' min</span><strong>'+money(x[3])+'</strong><span class="sm">'+t(x[0])+'</span></div>').join('');
 $('#tier').innerHTML=[1,0,2].map(i=>TIERS[i]).map(x=>'<option value="'+x[0]+'">SPUR '+x[1]+'™ · '+x[2]+' min · '+money(x[3])+'</option>').join('')+'<option value="unsure">'+t('unsure')+'</option>';
@@ -248,6 +264,7 @@ $('#em').innerHTML=CFG.email?' · <a href="mailto:'+CFG.email+'">'+(fr()?'Nous j
 $('#cp').textContent='© 2026 '+(CFG.entity||'SPUR');
 $('#lg').innerHTML=fr()?'EN | <b>FR</b>':'<b>EN</b> | FR';
 $('#tzn').textContent=(fr()?'Heures affichées à l’heure de ':'Times shown in ')+city+(fr()?'':' time');
+$('#city-sel').value = city;
 if(!rm||!$('#occ').textContent)rot(true);status();
 }
 function rot(init){const e=$('#occ');if(init&&oi>=0)e.textContent=OCCL[fr()?1:0][oi%3]}
@@ -258,7 +275,7 @@ const e=$('#st');e.className='status-text'+(on?' on':'');e.textContent=on?t('on'
 setInterval(status,60000);
 function setLang(){try{localStorage.setItem('spurL',L)}catch(e){}apply()}
 $('#lg').onclick=()=>{L=fr()?'en':'fr';setLang()};
-$$('.city').forEach(b=>b.onclick=()=>{city=b.dataset.c;$$('.city').forEach(x=>x.setAttribute('aria-pressed',x==b));apply();track('city_selected',{city})});
+$('#city-sel').onchange = e => { city = e.target.value; apply(); track('city_selected', {city}) };
 function openForm(m,pre){
 if(m!='wait'&&!CFG.live.includes(city))m='wait';mode=m;
 $('#ft').textContent=t({now:'tNow',later:'tLater',wait:'tWait'}[m]);
