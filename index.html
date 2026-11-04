@@ -46,7 +46,7 @@ h1{font-size:clamp(3rem,13vw,6rem);line-height:.95;letter-spacing:.02em}
 .ctas{display:grid;gap:12px;margin:18px auto 6px;max-width:460px}
 .ctas .btn{display:flex;flex-direction:column;gap:2px;text-align:center}
 .ctas small{font-weight:400;letter-spacing:0;opacity:.85}
-.st{font-size:.8rem;color:var(--mu);margin-top:14px}.st.on::before{content:"● ";color:#6fbf73}
+.status-text{font-size:.8rem;color:var(--mu);margin-top:14px}.status-text.on::before{content:"● ";color:#6fbf73}
 h2{font-size:2rem;margin-bottom:12px}
 ol{list-style:none;padding:0;margin:0;display:grid;gap:14px}
 li{background:var(--card);border:1px solid var(--ln);border-radius:14px;padding:16px 18px}
@@ -94,7 +94,7 @@ label input:not([type=checkbox]),label select{display:block;width:100%;min-heigh
 </div>
 <p id="spots" class="sm" style="color:var(--gold)"></p>
 <p><button class="lnk" id="cd" data-i="code"></button><button class="lnk" id="wl" data-i="wait"></button></p>
-<p id="st" class="st" role="status"></p>
+<p id="st" class="status-text" role="status"></p>
 </header>
 
 <section><h2 data-i="tiersh"></h2><div class="tiers" id="tiers"></div></section>
@@ -244,7 +244,7 @@ function rot(init){const e=$('#occ');if(init&&oi>=0)e.textContent=OCCL[fr()?1:0]
 setInterval(()=>{if(rm)return;const e=$('#occ');e.style.opacity=0;setTimeout(()=>{oi++;e.textContent=OCCL[fr()?1:0][oi%3];e.style.opacity=1},400)},4000);
 function status(){const n=new Date(),pt=new Date(n.toLocaleString('en-US',{timeZone:'America/Vancouver'})),h=pt.getHours(),off=n-pt,on=h>=9&&h<20;
 const f=(hh,d)=>new Date(new Date(pt.getFullYear(),pt.getMonth(),pt.getDate()+(d||0),hh).getTime()+off).toLocaleTimeString(fr()?'fr-CA':'en-CA',{hour:'numeric',minute:'2-digit'});
-const e=$('#st');e.className='st'+(on?' on':'');e.textContent=on?t('on')+' · '+f(9)+' – '+f(20):t('off')+' '+f(9,h>=20?1:0)}
+const e=$('#st');e.className='status-text'+(on?' on':'');e.textContent=on?t('on')+' · '+f(9)+' – '+f(20):t('off')+' '+f(9,h>=20?1:0)}
 setInterval(status,60000);
 function setLang(){try{localStorage.setItem('spurL',L)}catch(e){}apply()}
 $('#lg').onclick=()=>{L=fr()?'en':'fr';setLang()};
