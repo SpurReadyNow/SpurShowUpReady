@@ -7,13 +7,13 @@
 <meta name="description" content="Cut. Shape. Finish. Done right before the moment that matters. $49.99 flat. Not ready? We redo it free.">
 <meta property="og:title" content="SPUR | Show Up Ready">
 <meta property="og:description" content="Cut. Shape. Finish. Done right before the moment that matters. $49.99 flat. Not ready? We redo it free.">
-<meta property="og:image" content="https://spurreadynow.com/og-image.png">
+<meta property="og:image" content="https://spurreadynow.github.io/SpurShowUpReady/og-image.png">
 <meta property="og:type" content="website">
 <meta property="og:locale" content="en_CA">
 <meta property="og:locale:alternate" content="fr_CA">
 <meta name="twitter:card" content="summary_large_image">
 <meta name="theme-color" content="#0d0d0d">
-<link rel="canonical" href="https://spurreadynow.com/">
+<link rel="canonical" href="https://spurreadynow.github.io/SpurShowUpReady/">
 <link rel="icon" href="favicon.png">
 <link rel="preconnect" href="https://fonts.googleapis.com">
 <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
@@ -31,7 +31,7 @@ a{color:var(--gold)}button,select,input{font:inherit;color:inherit}
 .btn.p{background:var(--gold);color:#0d0d0d}.btn:disabled{opacity:.5}
 .lnk{background:none;border:0;color:var(--mu);text-decoration:underline;min-height:44px;padding:0 8px;cursor:pointer}
 nav{display:flex;justify-content:space-between;align-items:center;padding:12px 20px;max-width:1000px;margin:auto}
-.logo{font-size:1.8rem;letter-spacing:.1em;white-space:nowrap}.st{width:.45em;height:.45em;fill:var(--gold);margin-left:.15em;vertical-align:.5em}nav{flex-wrap:wrap;gap:8px}nav>span:last-child{display:flex;align-items:center;flex-wrap:wrap;gap:6px;justify-content:flex-end}.fb{border:1px solid var(--gold);color:var(--gold);background:rgba(201,164,92,.1);border-radius:999px;min-height:40px;padding:0 14px;font-size:.8rem;cursor:pointer}#lg{text-decoration:none;border:1px solid var(--ln);border-radius:999px;min-height:40px;padding:0 12px;color:var(--mu)}#lg b{color:var(--gold)}
+.logo{font-size:1.8rem;letter-spacing:.1em;white-space:nowrap}.st{width:.45em;height:.45em;fill:var(--gold);margin-left:.15em;vertical-align:.5em}nav{flex-wrap:wrap;gap:8px}nav>span:last-child{display:flex;align-items:center;flex-wrap:wrap;gap:6px;justify-content:flex-end}.fb{border:1px solid var(--gold);color:var(--gold);background:rgba(201,164,92,.1);border-radius:999px;min-height:40px;padding:0 14px;font-size:.8rem;cursor:pointer}#lg{text-decoration:none;border:1px solid var(--ln);border-radius:999px;min-height:40px;padding:0 12px;color:var(--mu)}#lg b{color:var(--gold)}.ann{text-align:center;padding:12px 16px 0}footer p{line-height:2.4}footer .lnk{color:var(--gold);padding:0;min-height:0;font-size:inherit}
 .hero,section,footer{max-width:760px;margin:auto;padding:36px 20px}
 .hero{text-align:center;padding-top:48px}
 h1{font-size:clamp(3rem,13vw,6rem);line-height:.95;letter-spacing:.02em}
@@ -72,7 +72,8 @@ label input:not([type=checkbox]),label select{display:block;width:100%;min-heigh
 </style>
 </head>
 <body>
-<nav><span class="logo" role="img" aria-label="SPUR">SPUR<svg class="st" viewBox="0 0 24 24" aria-hidden="true"><path d="M12 0c.8 6.6 5.4 11.2 12 12-6.6.8-11.2 5.4-12 12-.8-6.6-5.4-11.2-12-12C6.6 11.2 11.2 6.6 12 0z"/></svg></span><span><button class="fb" id="fnd" data-i="badge"></button><button class="lnk" id="lg" aria-label="Language">EN | FR</button></span></nav>
+<div class="ann"><button class="fb" id="fnd" data-i="badge"></button></div>
+<nav><span class="logo" role="img" aria-label="SPUR">SPUR<svg class="st" viewBox="0 0 24 24" aria-hidden="true"><path d="M12 0c.8 6.6 5.4 11.2 12 12-6.6.8-11.2 5.4-12 12-.8-6.6-5.4-11.2-12-12C6.6 11.2 11.2 6.6 12 0z"/></svg></span><span><button class="lnk" id="lg" aria-label="Language">EN | FR</button></span></nav>
 
 <header class="hero">
 <p class="tag" data-i="tag"></p>
@@ -234,7 +235,7 @@ $('#tier').innerHTML=[1,0,2].map(i=>TIERS[i]).map(x=>'<option value="'+x[0]+'">S
 $('#tm').innerHTML=Array.from({length:12},(_,i)=>'<option value="'+hhmm(i+9)+'">'+hhmm(i+9)+'</option>').join('');
 const tl=fr()&&CFG.frLegal?'-fr':'';$('#tl').href='terms'+tl+'.html';$('#pl').href='privacy'+tl+'.html';$('#gl').href='terms'+tl+'.html#guarantee';
 $('#lg2').innerHTML=fr()?'En envoyant, vous acceptez les <a href="terms'+tl+'.html">Conditions</a> et la <a href="privacy'+tl+'.html">Politique de confidentialité</a>.':'By submitting you agree to the <a href="terms.html">Terms</a> and <a href="privacy.html">Privacy Policy</a>.';
-$('#em').innerHTML=CFG.email?' · <a href="mailto:'+CFG.email+'">'+CFG.email+'</a>':'';
+$('#em').innerHTML=CFG.email?' · <a href="mailto:'+CFG.email+'">'+(fr()?'Nous joindre':'Contact')+'</a>':'';
 $('#cp').textContent='© 2026 '+(CFG.entity||'SPUR');
 $('#lg').innerHTML=fr()?'EN | <b>FR</b>':'<b>EN</b> | FR';
 $('#tzn').textContent=(fr()?'Heures affichées à l’heure de ':'Times shown in ')+city+(fr()?'':' time');
@@ -296,7 +297,7 @@ if(cool){b.disabled=false;coolMsg();return}
 if(!ok&&CFG.endpoint)ok=await post(CFG.endpoint,{'Content-Type':'application/json',Accept:'application/json'},last);
 b.disabled=false;track(ok?'form_submit':'form_error',{mode});
 if(!ok){$('#err').innerHTML='<a target="_blank" rel="noopener" href="'+wa()+'">'+t('eg')+'</a>';return}
-try{localStorage.setItem('spurP',JSON.stringify({name:last.name,phone:last.phone}));if(last.mode=='now')localStorage.setItem('spurLock',JSON.stringify({p:last.phone,id:last.id,u:Date.now()+120000}))}catch(x){}
+try{localStorage.setItem('spurP',JSON.stringify({name:last.name,phone:last.phone}));if(last.mode=='now')localStorage.setItem('spurLock',JSON.stringify({p:last.phone,id:last.id,u:Date.now()+18e5}))}catch(x){}
 try{const a=JSON.parse(localStorage.getItem('spurB')||'[]');a.unshift(last);localStorage.setItem('spurB',JSON.stringify(a.slice(0,10)))}catch(x){}
 done()};
 function done(){const w=last.mode=='wait',pr={edge:29.99,reset:69.99}[last.tier]||49.99,disc=(last.code||found)&&pr==49.99;
