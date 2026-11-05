@@ -3,6 +3,10 @@
 <head>
 <meta charset="utf-8">
 <meta name="viewport" content="width=device-width,initial-scale=1,viewport-fit=cover">
+<meta http-equiv="Content-Security-Policy" content="default-src 'self'; script-src 'self' 'unsafe-inline'; style-src 'self' 'unsafe-inline' https://fonts.googleapis.com; font-src https://fonts.gstatic.com; img-src 'self' data:; connect-src 'self' https://qhgeowthpjfxkeyhxufb.supabase.co https://formspree.io; object-src 'none'; base-uri 'none'; form-action 'self'">
+<meta name="referrer" content="strict-origin-when-cross-origin">
+<meta name="color-scheme" content="dark">
+<link rel="apple-touch-icon" href="favicon.png">
 <title>SPUR | Show Up Ready</title>
 <meta name="description" content="Cut. Shape. Finish. Done right before the moment that matters. $49.99 flat. Not ready? We redo it free.">
 <meta property="og:title" content="SPUR | Show Up Ready">
@@ -12,7 +16,7 @@
 <meta property="og:locale" content="en_CA">
 <meta property="og:locale:alternate" content="fr_CA">
 <meta name="twitter:card" content="summary_large_image">
-<meta name="theme-color" content="#0d0d0d">
+<meta name="theme-color" content="#0c0b09">
 <link rel="canonical" href="https://spurreadynow.github.io/SpurShowUpReady/">
 <link rel="icon" href="favicon.png">
 <link rel="preconnect" href="https://fonts.googleapis.com">
@@ -20,18 +24,18 @@
 <link href="https://fonts.googleapis.com/css2?family=Cormorant+Garamond:wght@500;600&family=Inter:wght@400;500;600&display=swap" rel="stylesheet">
 <script type="application/ld+json">{"@context":"https://schema.org","@type":"Organization","name":"SPUR","url":"https://spurreadynow.com","sameAs":["https://instagram.com/spur.readynow"]}</script>
 <style>
-:root{--bg:#0d0d0d;--card:#171717;--gold:#c9a45c;--tx:#f3efe8;--mu:#a9a39a;--ln:#2c2c2c}
+:root{color-scheme:dark;--bg:#0c0b09;--card:#151310;--gold:#d4af61;--gold2:#ecd391;--gold3:#a98334;--tx:#f5f0e6;--mu:#b5ad9f;--ln:#2e281d}
 *{box-sizing:border-box}html{scroll-behavior:smooth}
-body{margin:0;background:var(--bg);color:var(--tx);font:400 16px/1.55 Inter,system-ui,sans-serif;padding:env(safe-area-inset-top) 0 env(safe-area-inset-bottom)}
+body{margin:0;background:radial-gradient(900px 420px at 50% 0,rgba(212,175,97,.14),transparent 72%) no-repeat,var(--bg);color:var(--tx);font:400 16px/1.55 Inter,system-ui,sans-serif;padding:env(safe-area-inset-top) 0 env(safe-area-inset-bottom)}
 h1,h2,.logo{font-family:'Cormorant Garamond',Georgia,serif;font-weight:600;margin:0}
 a{color:var(--gold)}button,select,input{font:inherit;color:inherit}
 :focus-visible{outline:2px solid var(--gold);outline-offset:3px}
 .mu{color:var(--mu)}.sm{font-size:.85rem}
 .btn{min-height:48px;padding:10px 24px;border-radius:14px;border:1px solid var(--gold);background:none;color:var(--gold);letter-spacing:.08em;cursor:pointer;font-weight:600}
-.btn.p{background:var(--gold);color:#0d0d0d}.btn:disabled{opacity:.5}
+.btn.p{background:linear-gradient(180deg,var(--gold2),var(--gold) 55%,var(--gold3));color:#0c0b09;box-shadow:0 8px 28px rgba(212,175,97,.2)}.btn:disabled{opacity:.5}
 .lnk{background:none;border:0;color:var(--mu);text-decoration:underline;min-height:44px;padding:0 8px;cursor:pointer}
 nav{display:flex;justify-content:space-between;align-items:center;padding:12px 20px;max-width:1000px;margin:auto}
-.logo{font-size:1.8rem;letter-spacing:.1em;white-space:nowrap}.st{width:.45em;height:.45em;fill:var(--gold);margin-left:.15em;vertical-align:.5em}nav{flex-wrap:wrap;gap:8px}nav>span:last-child{display:flex;align-items:center;flex-wrap:wrap;gap:6px;justify-content:flex-end}.fb{border:1px solid var(--gold);color:var(--gold);background:rgba(201,164,92,.1);border-radius:999px;min-height:40px;padding:0 14px;font-size:.8rem;cursor:pointer}#lg{text-decoration:none;border:1px solid var(--ln);border-radius:999px;min-height:40px;padding:0 12px;color:var(--mu)}#lg b{color:var(--gold)}.ann{text-align:center;padding:12px 16px 0}p:empty{display:none}.cs{max-width:460px;margin:22px auto 0;text-align:left}.btn.t{border:0;background:none;text-decoration:underline;font-weight:500;letter-spacing:.04em;min-height:44px}footer p{line-height:2.4}footer .lnk{color:var(--gold);padding:0;min-height:0;font-size:inherit}
+.logo{font-size:1.8rem;letter-spacing:.1em;white-space:nowrap}.st{width:.5em;height:.5em;fill:var(--gold);margin-left:-.06em;vertical-align:.34em}nav{flex-wrap:wrap;gap:8px}nav>span:last-child{display:flex;align-items:center;flex-wrap:wrap;gap:6px;justify-content:flex-end}.fb{display:block;width:100%;border:0;border-bottom:1px solid rgba(201,164,92,.28);border-radius:0;color:var(--gold);background:rgba(201,164,92,.09);min-height:42px;padding:0 16px;font-size:.82rem;letter-spacing:.03em;cursor:pointer;text-align:center}#lg{text-decoration:none;border:1px solid var(--ln);border-radius:999px;min-height:40px;padding:0 12px;color:var(--mu)}#lg b{color:var(--gold)}.ann{padding:0}p:empty{display:none}.oc{display:block;width:100%;text-align:left;min-height:48px;margin-top:8px;padding:10px 14px;border-radius:10px;border:1px solid var(--ln);background:#0f0f0f;color:var(--tx);cursor:pointer}.oc[aria-pressed=true]{border-color:var(--gold);background:rgba(201,164,92,.12)}.oc.g{border-color:var(--gold);color:var(--gold);font-weight:600}.oc.g[aria-pressed=true]{background:var(--gold);color:#0d0d0d}.oc i{display:block;font-style:normal;font-weight:400;font-size:.8rem;opacity:.85}.sep{text-align:center;margin:14px 0 0}.gd{color:var(--gold);background:linear-gradient(180deg,var(--gold2),var(--gold) 60%,var(--gold3));-webkit-background-clip:text;background-clip:text;-webkit-text-fill-color:transparent}.cs{max-width:460px;margin:22px auto 0;text-align:left}.btn.t{border:0;background:none;text-decoration:underline;font-weight:500;letter-spacing:.04em;min-height:44px}footer p{line-height:2.4}footer .lnk{color:var(--gold);padding:0;min-height:0;font-size:inherit}
 .hero,section,footer{max-width:760px;margin:auto;padding:36px 20px}
 .hero{text-align:center;padding-top:48px}
 h1{font-size:clamp(3rem,13vw,6rem);line-height:.95;letter-spacing:.02em}
@@ -45,7 +49,7 @@ h1{font-size:clamp(3rem,13vw,6rem);line-height:.95;letter-spacing:.02em}
 .city[aria-pressed=true]{border-color:var(--gold);color:var(--gold)}
 .ctas{display:grid;gap:12px;margin:18px auto 6px;max-width:460px}
 .ctas .btn{display:flex;flex-direction:column;gap:2px;text-align:center}
-.ctas small{font-weight:400;letter-spacing:0;opacity:.85}
+.ctas small{font-weight:400;letter-spacing:0;opacity:.85;text-wrap:balance}
 .status-text{font-size:.68rem;letter-spacing:.08em;text-transform:uppercase;color:var(--mu)}.status-text.on::before{content:"● ";color:#6fbf73}
 h2{font-size:2rem;margin-bottom:12px}
 ol{list-style:none;padding:0;margin:0;display:grid;gap:14px}
@@ -72,22 +76,24 @@ label input:not([type=checkbox]),label select{display:block;width:100%;min-heigh
 </style>
 </head>
 <body>
+<noscript><p style="padding:24px;text-align:center">SPUR needs JavaScript. / SPUR nécessite JavaScript. WhatsApp: <a href="https://wa.me/14387251010">+1 438 725 1010</a></p></noscript>
 <div class="ann"><button class="fb" id="fnd" data-i="badge"></button></div>
 <nav><span class="logo" role="img" aria-label="SPUR">SPUR<svg class="st" viewBox="0 0 24 24" aria-hidden="true"><path d="M12 0c.8 6.6 5.4 11.2 12 12-6.6.8-11.2 5.4-12 12-.8-6.6-5.4-11.2-12-12C6.6 11.2 11.2 6.6 12 0z"/></svg></span><span><span id="st" class="status-text" role="status"></span><button class="lnk" id="lg" aria-label="Language">EN | FR</button></span></nav>
 
 <header class="hero">
 <p class="tag" data-i="tag"></p>
-<h1>SHOW UP READY.</h1>
+<h1>SHOW UP <span class="gd">READY.</span></h1>
 <p class="sub" data-i="sub"></p>
 <p class="pr" id="price"></p>
 <p class="gu"><a id="gl" href="terms.html#guarantee" data-i="guar"></a></p>
 <p class="occ" id="occ" aria-hidden="true"></p>
-<label class="cs"><span data-i="city"></span><select id="citysel"></select></label>
+<label class="cs"><select id="citysel"></select></label>
 <p class="mu sm" id="match"></p>
 <div class="ctas" id="ctas">
 <button class="btn p" id="now">READY NOW™<small data-i="nowd"></small></button>
 <button class="btn t" id="later">READY LATER™</button>
 </div>
+<p class="mu sm" id="offn"></p>
 <p id="spots" class="sm" style="color:var(--gold)"></p>
 <p><button class="lnk" id="cd" data-i="code"></button><button class="lnk" id="wl" data-i="wait"></button></p>
 </header>
@@ -130,7 +136,7 @@ label input:not([type=checkbox]),label select{display:block;width:100%;min-heigh
 <label data-m="wait" id="wol" hidden><input name="wo" data-p="other"></label>
 <label data-m="now later"><span data-i="tierl"></span><select name="tier" id="tier"></select><span class="sm" data-i="tnote"></span></label>
 <label class="ck" data-m="now later" id="smw" hidden><input type="checkbox" name="same" value="1"><span><span data-i="same"></span><b id="sn" style="color:var(--gold)"></b></span></label>
-<label data-m="now later"><span data-i="occl"></span><select name="occ" id="occ2"></select></label>
+<div data-m="now later"><p class="mu sm" data-i="occl" style="margin:12px 0 0"></p><div id="occ2"></div><input type="hidden" name="occ" id="occv"></div>
 <label data-m="later"><span data-i="date"></span><input type="date" name="date" id="dt"></label>
 <label data-m="later"><span data-i="time"></span><select name="time" id="tm"></select><span class="sm" id="tzn"></span></label>
 <label><span data-i="ref"></span><select name="ref" id="ref"></select></label>
@@ -146,6 +152,7 @@ label input:not([type=checkbox]),label select{display:block;width:100%;min-heigh
 <dialog id="dC" aria-labelledby="ct"><h2 id="ct" data-i="tcode"></h2>
 <label><span data-i="codel"></span><input id="ci" autocomplete="off"></label>
 <p id="co" class="sm" style="color:var(--gold)" role="status"></p>
+<p class="sm"><a href="https://instagram.com/spur.readynow" target="_blank" rel="noopener" data-i="nocode"></a></p>
 <div class="row"><button class="btn p" id="ca" data-i="apply"></button><button class="btn" data-x data-i="close"></button></div></dialog>
 
 <dialog id="dD" aria-labelledby="dt2"><h2 id="dt2" class="big" data-i="conf"></h2>
@@ -163,14 +170,14 @@ label input:not([type=checkbox]),label select{display:block;width:100%;min-heigh
 const CFG={wa:'14387251010',sb:'https://qhgeowthpjfxkeyhxufb.supabase.co',sbKey:'sb_publishable_EgMWTGI-NWUBuAZ0cjiixw_3jkU1bYz',endpoint:'https://formspree.io/f/xvkgllar',matchTime:'15 minutes',hoods:'Yaletown',noShow:{en:'Please cancel at least 2 hours ahead. Specialists are held to the same standard: if one cancels, we rematch you right away.',fr:'Veuillez annuler au moins 2 heures à l’avance. Les spécialistes respectent la même règle : en cas d’annulation de leur part, nous vous jumelons de nouveau aussitôt.'},tax:{en:'Taxes included',fr:'Taxes incluses'},pay:'',spots:'',email:'spurready@gmail.com',entity:'',live:['Vancouver'],frLegal:false};
 const TZ={Vancouver:'America/Vancouver','Montréal':'America/Toronto',Toronto:'America/Toronto'};
 const T={
-badge:['Founding Spurtan · first Refresh $39.99','Spurtan fondateur · première Refresh 39,99 $'],tag:['THE READINESS COMPANY','L’ENTREPRISE DE PRÉPARATION'],
+badge:['Founding Spurtan · First Refresh $39.99 →','Spurtan fondateur · Première Refresh 39,99 $ →'],tag:['THE READINESS COMPANY','L’ENTREPRISE DE PRÉPARATION'],
 sub:['Cut. Shape. Finish. Done right before the moment that matters.','Coupe. Forme. Finition. Bien fait, juste avant le moment qui compte.'],
 guar:['Not ready? We redo it free. Still not happy? Full refund.','Pas prêt ? On refait gratuitement. Toujours pas satisfait ? Remboursement complet.'],
 city:['Select your city','Choisissez votre ville'],
-nowd:['A SPUR Specialist assesses what you need. You just show up.','Un spécialiste SPUR évalue vos besoins. Vous n’avez qu’à vous présenter.'],
+nowd:['Your Specialist recommends. You approve. We coordinate the rest.','Votre spécialiste recommande. Vous approuvez. Nous coordonnons le reste.'],
 laterd:['Book a time that works. We’ll coordinate availability.','Réservez un moment qui vous convient. Nous coordonnons la disponibilité.'],
 code:['Have a Spurtan code?','Un code Spurtan ?'],wait:['Join the waitlist','Liste d’attente'],
-std:['The SPUR Standard','La norme SPUR'],intro:['We don’t look at menus. We look at you.','On ne regarde pas les menus. On vous regarde.'],
+std:['The SPUR Standard','La norme SPUR'],intro:['We don’t look at menus. We look at you.','On commence par vous, pas par une liste.'],
 s1t:['WE FIND YOUR SPECIALIST','NOUS TROUVONS VOTRE SPÉCIALISTE'],s1d:['We find a specialist near you. You go to them.','Nous trouvons un spécialiste près de vous. Vous vous rendez chez lui.'],
 s2t:['THE MATCH','LE JUMELAGE'],s2d:['We connect you with an appropriate available specialist.','Nous vous mettons en relation avec un spécialiste approprié et disponible.'],
 s3t:['THE CONSULTATION','LA CONSULTATION'],s3d:['Your specialist assesses and recommends. You approve.','Votre spécialiste évalue et recommande. Vous approuvez.'],
@@ -190,7 +197,7 @@ date:['Date','Date'],time:['Time','Heure'],ref:['How did you hear about SPUR? (o
 consent:['I agree to be contacted by SPUR by WhatsApp, SMS or email about my request. I can unsubscribe anytime.','J’accepte d’être contacté par SPUR par WhatsApp, texto ou courriel au sujet de ma demande. Je peux me désabonner en tout temps.'],
 sNow:['SEND REQUEST','ENVOYER LA DEMANDE'],sLater:['REQUEST SCHEDULED VISIT','DEMANDER LA VISITE'],sWait:['JOIN WAITLIST','REJOINDRE'],cancel:['CANCEL','ANNULER'],close:['CLOSE','FERMER'],
 tcode:['Enter Spurtan code','Entrez votre code Spurtan'],codel:['Membership code','Code de membre'],apply:['APPLY','APPLIQUER'],
-codeok:['Code received. Your concierge will confirm your price.','Code reçu. Votre concierge confirmera votre prix.'],
+codeok:['Code accepted. Your first Refresh is $39.99 (your concierge confirms).','Code accepté. Votre première Refresh est à 39,99 $ (confirmé par votre concierge).'],codebad:['That code isn’t valid or has already been used.','Ce code n’est pas valide ou a déjà été utilisé.'],codenet:['Couldn’t check the code. Please try again.','Impossible de vérifier le code. Réessayez.'],nocode:['No code? Message us on Instagram.','Pas de code ? Écrivez-nous sur Instagram.'],
 ephone:['Enter a valid mobile number.','Entrez un numéro de cellulaire valide.'],
 eg:['Something went wrong. Tap to message us on WhatsApp.','Une erreur s’est produite. Touchez pour nous écrire sur WhatsApp.'],
 conf:['Request received.','Demande reçue.'],cd1:['We’re coordinating your specialist match. Check your messages.','Nous coordonnons votre jumelage avec un spécialiste. Surveillez vos messages.'],
@@ -199,14 +206,14 @@ tot:['Final total','Total final'],fp:['Founding price (your concierge confirms)'
 cwa:['CONFIRM ON WHATSAPP','CONFIRMER SUR WHATSAPP'],back:['← BACK TO HOME','← RETOUR À L’ACCUEIL'],change:['Change of plans? Message the concierge.','Changement de plan ? Écrivez au concierge.'],
 pay:['Pay at the shop after your service, only once you feel ready.','Payez au salon après votre service, seulement quand vous vous sentez prêt.'],
 bkn:['Saved on this device only.','Enregistré sur cet appareil seulement.'],again:['Book again','Réserver à nouveau'],none:['No bookings yet.','Aucune réservation.'],
-on:['Concierge online','Concierge en ligne'],off:['Concierge back at','Concierge de retour à'],same:['Request the same specialist as last time (subject to availability)','Demander le même spécialiste que la dernière fois (selon disponibilité)'],notyou:['Not you? Reset details','Pas vous ? Réinitialiser'],cool:['You already have a request in progress. Tap to message your concierge to change it.','Vous avez déjà une demande en cours. Touchez pour écrire à votre concierge et la modifier.'],guarS:['Not ready? We redo it free.','Pas prêt ? On refait gratuitement.'],codeopt:['Spurtan code (optional)','Code Spurtan (facultatif)'],tnote2:['Times are a guide: your specialist takes the time the job needs. Hard deadline? Choose READY LATER and set your time.','Les durées sont indicatives : votre spécialiste prend le temps qu’il faut. Échéance précise ? Choisissez READY LATER et fixez votre heure.'],tiersh:['Services','Services'],edge:['Quick refinement between cuts: edge-up, line-up, neckline or beard tidy.','Mise au point rapide entre deux coupes : contours, ligne, nuque ou entretien de la barbe.'],refresh:['Cut. Shape. Finish. Our standard service.','Coupe. Forme. Finition. Notre service standard.'],reset:['Full restoration: haircut, beard and finish, done properly.','Restauration complète : coupe, barbe et finition, faites à fond.'],unsure:['Not sure: my specialist recommends','Je ne sais pas : mon spécialiste me conseille'],tierl:['Service','Service'],tnote:['Your specialist may recommend a different service. Any change and its price are confirmed with you before the service starts.','Votre spécialiste peut recommander un autre service. Tout changement et son prix sont confirmés avec vous avant le début du service.'],nextc:['SPUR opens in Montréal and Toronto together soon. Join the waitlist.','SPUR ouvrira bientôt à Montréal et à Toronto en même temps. Joignez la liste d’attente.']
+on:['Concierge online','Concierge en ligne'],off:['Concierge offline','Concierge hors ligne'],offn:['Concierge is back at {t}. Requests sent now are confirmed then.','Le concierge est de retour à {t}. Les demandes envoyées maintenant seront confirmées à ce moment.'],same:['Request the same specialist as last time (subject to availability)','Demander le même spécialiste que la dernière fois (selon disponibilité)'],notyou:['Not you? Reset details','Pas vous ? Réinitialiser'],cool:['You already have a request in progress. Tap to message your concierge to change it.','Vous avez déjà une demande en cours. Touchez pour écrire à votre concierge et la modifier.'],guarS:['Not ready? We redo it free.','Pas prêt ? On refait gratuitement.'],codeopt:['Spurtan code (optional)','Code Spurtan (facultatif)'],tnote2:['Times are a guide: your specialist takes the time the job needs. Hard deadline? Choose READY LATER and set your time.','Les durées sont indicatives : votre spécialiste prend le temps qu’il faut. Échéance précise ? Choisissez READY LATER et fixez votre heure.'],orocc:['or choose an occasion','ou choisissez une occasion'],pick:['Please select your city to continue.','Choisissez votre ville pour continuer.'],tiersh:['Services','Services'],edge:['Quick refinement between cuts: edge-up, line-up, neckline or beard tidy.','Mise au point rapide entre deux coupes : contours, ligne, nuque ou entretien de la barbe.'],refresh:['Cut. Shape. Finish. Our standard service.','Coupe. Forme. Finition. Notre service standard.'],reset:['Full restoration: haircut, beard and finish, done properly.','Restauration complète : coupe, barbe et finition, faites à fond.'],unsure:['Not sure: my specialist recommends','Je ne sais pas : mon spécialiste me conseille'],tierl:['Service','Service'],tnote:['Your specialist may recommend a different service. Any change and its price are confirmed with you before the service starts.','Votre spécialiste peut recommander un autre service. Tout changement et son prix sont confirmés avec vous avant le début du service.'],nextc:['SPUR opens in Montréal and Toronto together soon. Join the waitlist.','SPUR ouvrira bientôt à Montréal et à Toronto en même temps. Joignez la liste d’attente.']
 };
 const OCC=[['Just for Me: the occasion is me','Juste pour moi : l’occasion, c’est moi'],['Professional: meeting / interview / stage','Professionnel : réunion / entrevue / scène'],['Social: date / wedding / night out','Social : rendez-vous / mariage / sortie'],['Life: travel / celebration / milestone','Vie : voyage / célébration / étape importante']];
 const OCCL=[['Interview at 2? Be ready by 1.','Wedding Saturday? Be ready Friday.','Date at 8? Be ready by 7.'],['Entrevue à 14 h ? Soyez prêt à 13 h.','Mariage samedi ? Soyez prêt vendredi.','Rendez-vous à 20 h ? Soyez prêt à 19 h.']];
 const REF=[['','—','—'],['Instagram','Instagram','Instagram'],['Friend','Friend','Ami'],['Barber','Barber','Barbier'],['Other','Other','Autre']];
 const TIERS=[['edge','Edge',15,29.99],['refresh','Refresh',30,49.99],['reset','Reset','45–60',69.99]];
 const $=s=>document.querySelector(s),$$=s=>[...document.querySelectorAll(s)];
-let lastSp='',L='en',city='Vancouver',mode='now',code='',found=false,last={},oi=0;
+let lastSp='',L='en',city='',mode='now',code='',found=false,codeOk=false,spotsLeft=null,last={},oi=0;
 try{L=localStorage.getItem('spurL')||''}catch(e){}
 if(!L)L=(navigator.language||'').toLowerCase().startsWith('fr')?'fr':'en';
 const fr=()=>L=='fr',t=k=>T[k][fr()?1:0];
@@ -220,12 +227,12 @@ $$('[data-i]').forEach(e=>e.textContent=t(e.dataset.i));
 $$('[data-p]').forEach(e=>e.placeholder=t(e.dataset.p));
 $('#price').textContent=money(49.99)+(fr()?' tarif fixe':' flat')+' · '+CFG.tax[L];
 const p=[];if(CFG.matchTime)p.push(fr()?'Jumelage en environ '+CFG.matchTime:'Matched in about '+CFG.matchTime);
-if(CFG.hoods)p.push(fr()?'Lancement à '+CFG.hoods:'Starting in '+CFG.hoods);if(!CFG.live.includes(city)){p.length=0;p.push(t('nextc'))}
-$('#match').textContent=p.join(' · ');
-$('#citysel').innerHTML=[['Vancouver','Vancouver · '+(fr()?'maintenant ouvert':'now live')],['Montréal','Montréal · '+(fr()?'liste d’attente':'join the waitlist')],['Toronto','Toronto · '+(fr()?'liste d’attente':'join the waitlist')]].map(x=>'<option value="'+x[0]+'"'+(x[0]==city?' selected':'')+'>'+x[1]+'</option>').join('');
+if(CFG.hoods)p.push(fr()?'Lancement à '+CFG.hoods:'Starting in '+CFG.hoods);if(city&&!CFG.live.includes(city)){p.length=0;p.push(t('nextc'))}
+$('#match').textContent=p.join(' · ');$('#match').style.color='';
+$('#citysel').setAttribute('aria-label',t('city'));$('#citysel').innerHTML='<option value=""'+(city?'':' selected')+' disabled>'+t('city')+'</option>'+[['Vancouver','Vancouver · '+(fr()?'maintenant ouvert':'now live')],['Montréal','Montréal · '+(fr()?'liste d’attente':'join the waitlist')],['Toronto','Toronto · '+(fr()?'liste d’attente':'join the waitlist')]].map(x=>'<option value="'+x[0]+'"'+(x[0]==city?' selected':'')+'>'+x[1]+'</option>').join('');
 if(CFG.matchTime)$('#a1').textContent+=fr()?' Le jumelage prend habituellement environ '+CFG.matchTime+'.':' Matching usually takes about '+CFG.matchTime+'.';if(CFG.hoods)$('#a2').textContent+=fr()?' Lancement à '+CFG.hoods+', Vancouver.':' Launching in '+CFG.hoods+', Vancouver.';$('#a3').textContent+=' '+CFG.tax[L];$('#a5').textContent+=' '+CFG.noShow[L];$('#ns').textContent=CFG.noShow[L];
-$('#spots').textContent=CFG.spots?(fr()?CFG.spots+' places fondateur restantes à Vancouver':CFG.spots+' founding spots left in Vancouver'):'';
-$('#occ2').innerHTML='<option value="">—</option>'+OCC.map(o=>'<option value="'+o[0]+'">'+o[fr()?1:0]+'</option>').join('');
+$('#spots').textContent=spotsLeft>0?(fr()?spotsLeft+' places fondateur restantes':spotsLeft+' founding spots left'):'';$('.ann').hidden=spotsLeft===0;if(codeOk)$('#cd').textContent='✓ '+code;
+$('#occ2').innerHTML=OCC.map((o,i)=>'<button type="button" class="oc'+(i?'':' g')+'" aria-pressed="false" data-v="'+o[0]+'">'+(i?o[fr()?1:0]:fr()?'Juste pour moi<i>l’occasion, c’est moi</i>':'Just for Me<i>the occasion is me</i>')+'</button>'+(i?'':'<p class="mu sm sep">'+t('orocc')+'</p>')).join('');
 $('#ref').innerHTML=REF.map(r=>'<option value="'+r[0]+'">'+r[fr()?2:1]+'</option>').join('');
 $('#tiers').innerHTML=TIERS.map(x=>'<div class="tc"><b>SPUR '+x[1]+'™</b><span class="mu sm">'+(fr()?'environ ':'about ')+x[2]+' min</span><strong>'+money(x[3])+'</strong><span class="sm">'+t(x[0])+'</span></div>').join('');
 $('#tier').innerHTML=[1,0,2].map(i=>TIERS[i]).map(x=>'<option value="'+x[0]+'">SPUR '+x[1]+'™ · '+x[2]+' min · '+money(x[3])+'</option>').join('')+'<option value="unsure">'+t('unsure')+'</option>';
@@ -242,19 +249,21 @@ function rot(init){const e=$('#occ');if(init&&oi>=0)e.textContent=OCCL[fr()?1:0]
 setInterval(()=>{if(rm)return;const e=$('#occ');e.style.opacity=0;setTimeout(()=>{oi++;e.textContent=OCCL[fr()?1:0][oi%3];e.style.opacity=1},400)},4000);
 function status(){const n=new Date(),pt=new Date(n.toLocaleString('en-US',{timeZone:'America/Vancouver'})),h=pt.getHours(),off=n-pt,on=h>=9&&h<20;
 const f=(hh,d)=>new Date(new Date(pt.getFullYear(),pt.getMonth(),pt.getDate()+(d||0),hh).getTime()+off).toLocaleTimeString(fr()?'fr-CA':'en-CA',{hour:'numeric',minute:'2-digit'});
-const e=$('#st');e.className='status-text'+(on?' on':'');e.textContent=on?t('on'):t('off')+' '+f(9,h>=20?1:0);e.title=f(9)+' – '+f(20)}
+const e=$('#st');e.className='status-text'+(on?' on':'');e.textContent=on?t('on'):'';e.title=f(9)+' – '+f(20);$('#offn').textContent=on?'':t('offn').replace('{t}',f(9,h>=20?1:0))}
 setInterval(status,60000);
 function setLang(){try{localStorage.setItem('spurL',L)}catch(e){}apply()}
 $('#lg').onclick=()=>{L=fr()?'en':'fr';setLang()};
 $('#citysel').onchange=e=>{city=e.target.value;apply();track('city_selected',{city})};
+const needCity=()=>{const c=$('#citysel');c.scrollIntoView({block:'center',behavior:rm?'auto':'smooth'});c.focus();$('#match').textContent=t('pick');$('#match').style.color='var(--gold)'};
 function openForm(m,pre){
+if(m!='wait'&&!city){needCity();return}
 if(m!='wait'&&!CFG.live.includes(city))m='wait';mode=m;
 $('#ft').textContent=t({now:'tNow',later:'tLater',wait:'tWait'}[m]);
 $('#fd').textContent=t({now:'dNow',later:'dLater',wait:'dWait'}[m]);
 $('#go').textContent=t({now:'sNow',later:'sLater',wait:'sWait'}[m]);
 $$('#f [data-m]').forEach(e=>e.hidden=!e.dataset.m.split(' ').includes(m));
 $('#wol').hidden=!(m=='wait'&&$('#wc').value=='Other');
-$('#err').textContent='';
+$('#err').textContent='';$$('.oc').forEach(x=>x.setAttribute('aria-pressed','false'));$('#occv').value='';
 if(m=='wait'&&['Montréal','Toronto'].includes(city))$('#wc').value=city;
 let sv={};try{sv=JSON.parse(localStorage.getItem('spurP')||'{}')}catch(e){}
 const pp=pre||sv;if(pp.name||pp.phone){$('#f [name=name]').value=pp.name||'';$('#f [name=phone]').value=pp.phone||''}
@@ -270,9 +279,11 @@ $('#rs').onclick=()=>{try{localStorage.removeItem('spurP')}catch(e){}$('#f [name
 $('#wc').onchange=()=>$('#wol').hidden=$('#wc').value!='Other';
 const go=m=>()=>{track(m=='now'?'ready_now_click':m=='later'?'ready_later_click':'waitlist_join');openForm(m)};
 $('#now').onclick=go('now');$('#now2').onclick=go('now');$('#later').onclick=go('later');$('#wl').onclick=go('wait');
-$('#fnd').onclick=()=>{found=true;openForm('now')};
+$('#fnd').onclick=()=>{$('#co').textContent='';$('#dC').showModal()};
 $('#cd').onclick=()=>{$('#co').textContent='';$('#dC').showModal()};
-$('#ca').onclick=()=>{const v=$('#ci').value.trim();if(!v)return;code=v;$('#co').textContent=t('codeok');track('code_applied')};
+$('#ca').onclick=async()=>{const v=$('#ci').value.trim().toUpperCase().slice(0,20);if(!v)return;$('#co').textContent='…';let st='net';try{const r=await fetch(CFG.sb+'/rest/v1/rpc/check_spurtan_code',{method:'POST',headers:{apikey:CFG.sbKey,'Content-Type':'application/json'},body:JSON.stringify({p_code:v})});if(r.ok)st=(await r.json())===true?'ok':'bad'}catch(e){}
+if(st=='ok'){code=v;codeOk=true;$('#co').textContent=t('codeok');$('#cd').textContent='✓ '+v;track('code_applied')}else{code='';codeOk=false;$('#co').textContent=t(st=='bad'?'codebad':'codenet')}};
+$('#occ2').onclick=e=>{const b=e.target.closest('.oc');if(!b)return;const on=b.getAttribute('aria-pressed')=='true';$$('.oc').forEach(x=>x.setAttribute('aria-pressed','false'));$('#occv').value=on?'':b.dataset.v;if(!on)b.setAttribute('aria-pressed','true')};
 
 
 $$('[data-x]').forEach(b=>b.onclick=()=>b.closest('dialog').close());
@@ -299,22 +310,24 @@ if(!ok){$('#err').innerHTML='<a target="_blank" rel="noopener" href="'+wa()+'">'
 try{localStorage.setItem('spurP',JSON.stringify({name:last.name,phone:last.phone}));if(last.mode=='now')localStorage.setItem('spurLock',JSON.stringify({p:last.phone,id:last.id,u:Date.now()+18e5}))}catch(x){}
 try{const a=JSON.parse(localStorage.getItem('spurB')||'[]');a.unshift(last);localStorage.setItem('spurB',JSON.stringify(a.slice(0,10)))}catch(x){}
 done()};
-function done(){const w=last.mode=='wait',pr={edge:29.99,reset:69.99}[last.tier]||49.99,disc=(last.code||found)&&pr==49.99;
+function done(){const w=last.mode=='wait',pr={edge:29.99,reset:69.99}[last.tier]||49.99,disc=!!last.code&&pr==49.99;
 $('#dF').close();$('#f').reset();$('#cdsc').textContent=t(w?'wd':'cd1');$('#cdet').hidden=w;
 $('#clab').textContent=disc?t('fp'):t('tot');$('#ctot').textContent=money(disc?39.99:pr)+' · '+CFG.tax[L];
 $('#cid').textContent=last.id;$('#cloc').textContent=last.city;$('#pay').textContent=CFG.pay||t('pay');
 $('#cwa').href=wa();$('#chg').href='https://wa.me/'+CFG.wa+'?text='+encodeURIComponent('SPUR '+last.id+(fr()?' : je dois modifier ma demande.':': I need to modify my request.'));
-$('#dD').showModal()}
+code='';codeOk=false;$('#cd').textContent=t('code');$('#dD').showModal()}
 $('#cwa').addEventListener('click',()=>track('whatsapp_confirm_click'));
 $('#bk').onclick=()=>{let a=[];try{a=JSON.parse(localStorage.getItem('spurB')||'[]')}catch(e){}
 const l=$('#bl');l.innerHTML=a.length?'':'<p class="mu">'+t('none')+'</p>';
 a.forEach(x=>{const r=document.createElement('p');r.textContent=x.id+' · '+x.city+' · '+[x.date,x.time].filter(Boolean).join(' ')+' ';
-const b=document.createElement('button');b.className='lnk';b.textContent=t('again');b.onclick=()=>{$('#dB').close();track('book_again_click');openForm(x.mode=='wait'?'now':x.mode,x)};r.append(b);l.append(r)});
+const b=document.createElement('button');b.className='lnk';b.textContent=t('again');b.onclick=()=>{$('#dB').close();track('book_again_click');if(!city&&TZ[x.city]){city=x.city;apply()}openForm(x.mode=='wait'?'now':x.mode,x)};r.append(b);l.append(r)});
 $('#dB').showModal()};
 const d0=new Date(),iso=d=>new Date(d-d.getTimezoneOffset()*6e4).toISOString().slice(0,10);
 $('#dt').min=iso(d0);$('#dt').max=iso(new Date(d0.getTime()+14*864e5));
 if('IntersectionObserver'in window)new IntersectionObserver(([e])=>$('#bar').classList.toggle('show',!e.isIntersecting)).observe($('#ctas'));
+try{const b0=JSON.parse(localStorage.getItem('spurB')||'[]')[0];if(b0&&TZ[b0.city])city=b0.city}catch(e){}
 apply();
+if(CFG.sb)fetch(CFG.sb+'/rest/v1/rpc/spurtan_spots_left',{method:'POST',headers:{apikey:CFG.sbKey,'Content-Type':'application/json'},body:'{}'}).then(r=>r.ok?r.json():null).then(n=>{if(typeof n=='number'){spotsLeft=n;apply()}}).catch(()=>{});
 </script>
 </body>
 </html>
