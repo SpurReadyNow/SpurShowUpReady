@@ -67,7 +67,6 @@ footer{text-align:center;color:var(--mu);font-size:.85rem;padding-bottom:90px}
 @media(max-width:700px){#bar.show{display:block}}
 dialog{background:var(--card);color:var(--tx);border:1px solid var(--ln);border-radius:18px;padding:22px;width:min(440px,calc(100% - 24px));max-height:92dvh}
 dialog::backdrop{background:rgba(0,0,0,.75)}
-.tiers{display:grid;gap:12px}@media(min-width:700px){.tiers{grid-template-columns:repeat(3,1fr)}}
 .tc{background:var(--card);border:1px solid var(--ln);border-radius:14px;padding:16px;display:grid;gap:4px}.tc b{color:var(--gold)}.tc strong{font-size:1.3rem}
 label{display:block;margin:12px 0 0;font-size:.85rem;color:var(--mu)}
 label input:not([type=checkbox]),label select{display:block;width:100%;min-height:48px;margin-top:4px;padding:0 12px;border-radius:10px;border:1px solid var(--ln);background:#0f0f0f;font-size:16px}
@@ -98,8 +97,6 @@ label input:not([type=checkbox]),label select{display:block;width:100%;min-heigh
 <p class="mu sm" id="offn"></p>
 <p><button class="lnk" id="wl" data-i="wait"></button></p>
 </header>
-
-<section><h2 data-i="tiersh"></h2><div class="tiers" id="tiers"></div><p class="mu sm" data-i="tnote2"></p></section>
 
 <section id="how">
 <h2 data-i="std"></h2>
@@ -199,7 +196,7 @@ tot:['Final total','Total final'],
 cwa:['CONFIRM ON WHATSAPP','CONFIRMER SUR WHATSAPP'],back:['← BACK TO HOME','← RETOUR À L’ACCUEIL'],change:['Change of plans? Message the concierge.','Changement de plan ? Écrivez au concierge.'],
 pay:['Pay at the shop after your service, only once you feel ready.','Payez au salon après votre service, seulement quand vous vous sentez prêt.'],
 bkn:['Saved on this device only.','Enregistré sur cet appareil seulement.'],again:['Book again','Réserver à nouveau'],none:['No bookings yet.','Aucune réservation.'],
-on:['Concierge online','Concierge en ligne'],off:['Concierge offline','Concierge hors ligne'],offn:['Concierge is back at {t}. Requests sent now are confirmed then.','Le concierge est de retour à {t}. Les demandes envoyées maintenant seront confirmées à ce moment.'],same:['Request the same specialist as last time (subject to availability)','Demander le même spécialiste que la dernière fois (selon disponibilité)'],notyou:['Not you? Reset details','Pas vous ? Réinitialiser'],cool:['You already have a request in progress. Tap to message your concierge to change it.','Vous avez déjà une demande en cours. Touchez pour écrire à votre concierge et la modifier.'],guarS:['Not ready? We redo it free.','Pas prêt ? On refait gratuitement.'],tnote2:['Times are a guide: your specialist takes the time the job needs. Hard deadline? Message your concierge.','Les durées sont indicatives : votre spécialiste prend le temps qu’il faut. Échéance précise ? Écrivez à votre concierge.'],pick:['Please select your city to continue.','Choisissez votre ville pour continuer.'],tiersh:['Services','Services'],edge:['Quick refinement between cuts: edge-up, line-up, neckline or beard tidy.','Mise au point rapide entre deux coupes : contours, ligne, nuque ou entretien de la barbe.'],tierl:['Service','Service'],tnote:['Your specialist may recommend a different service. Any change and its price are confirmed with you before the service starts.','Votre spécialiste peut recommander un autre service. Tout changement et son prix sont confirmés avec vous avant le début du service.'],nextc:['SPUR opens in Montréal and Toronto together soon. Join the waitlist.','SPUR ouvrira bientôt à Montréal et à Toronto en même temps. Joignez la liste d’attente.']
+on:['Concierge online','Concierge en ligne'],off:['Concierge offline','Concierge hors ligne'],offn:['Concierge is back at {t}. Requests sent now are confirmed then.','Le concierge est de retour à {t}. Les demandes envoyées maintenant seront confirmées à ce moment.'],same:['Request the same specialist as last time (subject to availability)','Demander le même spécialiste que la dernière fois (selon disponibilité)'],notyou:['Not you? Reset details','Pas vous ? Réinitialiser'],cool:['You already have a request in progress. Tap to message your concierge to change it.','Vous avez déjà une demande en cours. Touchez pour écrire à votre concierge et la modifier.'],guarS:['Not ready? We redo it free.','Pas prêt ? On refait gratuitement.'],tnote2:['Times are a guide: your specialist takes the time the job needs. Hard deadline? Message your concierge.','Les durées sont indicatives : votre spécialiste prend le temps qu’il faut. Échéance précise ? Écrivez à votre concierge.'],pick:['Please select your city to continue.','Choisissez votre ville pour continuer.'],edge:['Quick refinement between cuts: edge-up, line-up, neckline or beard tidy.','Mise au point rapide entre deux coupes : contours, ligne, nuque ou entretien de la barbe.'],tierl:['Service','Service'],tnote:['Your specialist may recommend a different service. Any change and its price are confirmed with you before the service starts.','Votre spécialiste peut recommander un autre service. Tout changement et son prix sont confirmés avec vous avant le début du service.'],nextc:['SPUR opens in Montréal and Toronto together soon. Join the waitlist.','SPUR ouvrira bientôt à Montréal et à Toronto en même temps. Joignez la liste d’attente.']
 };
 const REF=[['','—','—'],['Instagram','Instagram','Instagram'],['Friend','Friend','Ami'],['Barber','Barber','Barbier'],['Other','Other','Autre']];
 const TIERS=[['edge','Edge',15,29.99]];
@@ -223,8 +220,10 @@ $('#match').textContent=p.join(' · ');$('#match').style.color='';
 $('#citysel').setAttribute('aria-label',t('city'));$('#citysel').innerHTML='<option value=""'+(city?'':' selected')+' disabled>'+t('city')+'</option>'+[['Vancouver','Vancouver · '+(fr()?'maintenant ouvert':'now live')],['Montréal','Montréal · '+(fr()?'liste d’attente':'join the waitlist')],['Toronto','Toronto · '+(fr()?'liste d’attente':'join the waitlist')]].map(x=>'<option value="'+x[0]+'"'+(x[0]==city?' selected':'')+'>'+x[1]+'</option>').join('');
 if(CFG.matchTime)$('#a1').textContent+=fr()?' Le jumelage prend habituellement environ '+CFG.matchTime+'.':' Matching usually takes about '+CFG.matchTime+'.';if(CFG.hoods)$('#a2').textContent+=fr()?' Lancement à '+CFG.hoods+', Vancouver.':' Launching in '+CFG.hoods+', Vancouver.';$('#a3').textContent+=' '+CFG.tax[L];$('#a5').textContent+=' '+CFG.noShow[L];$('#ns').textContent=CFG.noShow[L];
 $('#ref').innerHTML=REF.map(r=>'<option value="'+r[0]+'">'+r[fr()?2:1]+'</option>').join('');
-$('#tiers').innerHTML=TIERS.map(x=>'<div class="tc"><b>SPUR '+x[1]+'™</b><span class="mu sm">'+(fr()?'environ ':'about ')+x[2]+' min</span><strong>'+money(x[3])+'</strong><span class="sm">'+t(x[0])+'</span></div>').join('');
+
+// ONLY populate the hidden dropdown for the booking form backend 
 $('#tier').innerHTML=TIERS.map(x=>'<option value="'+x[0]+'" selected>SPUR '+x[1]+'™ · '+x[2]+' min · '+money(x[3])+'</option>').join('');
+
 $('#tm').innerHTML=Array.from({length:12},(_,i)=>'<option value="'+hhmm(i+9)+'">'+hhmm(i+9)+'</option>').join('');
 const tl=fr()&&CFG.frLegal?'-fr':'';$('#tl').href='terms'+tl+'.html';$('#pl').href='privacy'+tl+'.html';$('#gl').href='terms'+tl+'.html#guarantee';
 $('#lg2').innerHTML=fr()?'En envoyant, vous acceptez les <a href="terms'+tl+'.html">Conditions</a> et la <a href="privacy'+tl+'.html">Politique de confidentialité</a>.':'By submitting you agree to the <a href="terms.html">Terms</a> and <a href="privacy.html">Privacy Policy</a>.';
