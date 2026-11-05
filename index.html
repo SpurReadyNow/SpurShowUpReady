@@ -96,6 +96,7 @@ label input:not([type=checkbox]),label select{display:block;width:100%;min-heigh
 <p class="mu sm" id="offn"></p>
 <p id="spots" class="sm" style="color:var(--gold)"></p>
 <p><button class="lnk" id="cd" data-i="code"></button><button class="lnk" id="wl" data-i="wait"></button></p>
+<p class="sm" id="cdmsg" style="color:var(--gold)"></p>
 </header>
 
 <section><h2 data-i="tiersh"></h2><div class="tiers" id="tiers"></div><p class="mu sm" data-i="tnote2"></p></section>
@@ -128,7 +129,7 @@ label input:not([type=checkbox]),label select{display:block;width:100%;min-heigh
 <div id="bar"><button class="btn p" id="now2">READY NOW™</button></div>
 
 <dialog id="dF" aria-labelledby="ft"><form id="f" autocomplete="on">
-<h2 id="ft"></h2><p class="mu" id="fd"></p>
+<h2 id="ft"></h2><p class="mu" id="fd"></p><p class="sm" id="fcode" style="color:var(--gold)"></p>
 <label><span data-i="name"></span><input name="name" required maxlength="100" autocomplete="name"></label>
 <label><span data-i="phone"></span><input name="phone" type="tel" inputmode="tel" required autocomplete="tel"></label>
 <button type="button" class="lnk" id="rs" hidden data-i="notyou"></button>
@@ -231,11 +232,11 @@ if(CFG.hoods)p.push(fr()?'Lancement à '+CFG.hoods:'Starting in '+CFG.hoods);if(
 $('#match').textContent=p.join(' · ');$('#match').style.color='';
 $('#citysel').setAttribute('aria-label',t('city'));$('#citysel').innerHTML='<option value=""'+(city?'':' selected')+' disabled>'+t('city')+'</option>'+[['Vancouver','Vancouver · '+(fr()?'maintenant ouvert':'now live')],['Montréal','Montréal · '+(fr()?'liste d’attente':'join the waitlist')],['Toronto','Toronto · '+(fr()?'liste d’attente':'join the waitlist')]].map(x=>'<option value="'+x[0]+'"'+(x[0]==city?' selected':'')+'>'+x[1]+'</option>').join('');
 if(CFG.matchTime)$('#a1').textContent+=fr()?' Le jumelage prend habituellement environ '+CFG.matchTime+'.':' Matching usually takes about '+CFG.matchTime+'.';if(CFG.hoods)$('#a2').textContent+=fr()?' Lancement à '+CFG.hoods+', Vancouver.':' Launching in '+CFG.hoods+', Vancouver.';$('#a3').textContent+=' '+CFG.tax[L];$('#a5').textContent+=' '+CFG.noShow[L];$('#ns').textContent=CFG.noShow[L];
-$('#spots').textContent=spotsLeft>0?(fr()?spotsLeft+' places fondateur restantes':spotsLeft+' founding spots left'):'';$('.ann').hidden=spotsLeft===0;if(codeOk)$('#cd').textContent='✓ '+code;
+$('#spots').textContent=spotsLeft>0?(fr()?spotsLeft+' places fondateur restantes':spotsLeft+' founding spots left'):'';$('.ann').hidden=spotsLeft===0;if(codeOk)$('#cd').textContent='✓ '+code;$('#cdmsg').textContent=codeOk?(fr()?'Prix fondateur appliqué à votre première Refresh : 39,99 $':'Founding price applied to your first Refresh: $39.99'):'';
 $('#occ2').innerHTML=OCC.map((o,i)=>'<button type="button" class="oc'+(i?'':' g')+'" aria-pressed="false" data-v="'+o[0]+'">'+(i?o[fr()?1:0]:fr()?'Juste pour moi<i>l’occasion, c’est moi</i>':'Just for Me<i>the occasion is me</i>')+'</button>'+(i?'':'<p class="mu sm sep">'+t('orocc')+'</p>')).join('');
 $('#ref').innerHTML=REF.map(r=>'<option value="'+r[0]+'">'+r[fr()?2:1]+'</option>').join('');
 $('#tiers').innerHTML=TIERS.map(x=>'<div class="tc"><b>SPUR '+x[1]+'™</b><span class="mu sm">'+(fr()?'environ ':'about ')+x[2]+' min</span><strong>'+money(x[3])+'</strong><span class="sm">'+t(x[0])+'</span></div>').join('');
-$('#tier').innerHTML=[1,0,2].map(i=>TIERS[i]).map(x=>'<option value="'+x[0]+'">SPUR '+x[1]+'™ · '+x[2]+' min · '+money(x[3])+'</option>').join('')+'<option value="unsure">'+t('unsure')+'</option>';
+$('#tier').innerHTML=[1,0,2].map(i=>TIERS[i]).map(x=>'<option value="'+x[0]+'">SPUR '+x[1]+'™ · '+x[2]+' min · '+money(x[0]=='refresh'&&codeOk?39.99:x[3])+(x[0]=='refresh'&&codeOk?' ✓':'')+'</option>').join('')+'<option value="unsure">'+t('unsure')+'</option>';
 $('#tm').innerHTML=Array.from({length:12},(_,i)=>'<option value="'+hhmm(i+9)+'">'+hhmm(i+9)+'</option>').join('');
 const tl=fr()&&CFG.frLegal?'-fr':'';$('#tl').href='terms'+tl+'.html';$('#pl').href='privacy'+tl+'.html';$('#gl').href='terms'+tl+'.html#guarantee';
 $('#lg2').innerHTML=fr()?'En envoyant, vous acceptez les <a href="terms'+tl+'.html">Conditions</a> et la <a href="privacy'+tl+'.html">Politique de confidentialité</a>.':'By submitting you agree to the <a href="terms.html">Terms</a> and <a href="privacy.html">Privacy Policy</a>.';
@@ -263,7 +264,7 @@ $('#fd').textContent=t({now:'dNow',later:'dLater',wait:'dWait'}[m]);
 $('#go').textContent=t({now:'sNow',later:'sLater',wait:'sWait'}[m]);
 $$('#f [data-m]').forEach(e=>e.hidden=!e.dataset.m.split(' ').includes(m));
 $('#wol').hidden=!(m=='wait'&&$('#wc').value=='Other');
-$('#err').textContent='';$$('.oc').forEach(x=>x.setAttribute('aria-pressed','false'));$('#occv').value='';
+$('#err').textContent='';$$('.oc').forEach(x=>x.setAttribute('aria-pressed','false'));$('#occv').value='';$('#fcode').textContent=codeOk&&m!='wait'?'✓ '+code+' · '+(fr()?'Première Refresh : 39,99 $':'First Refresh: $39.99'):'';
 if(m=='wait'&&['Montréal','Toronto'].includes(city))$('#wc').value=city;
 let sv={};try{sv=JSON.parse(localStorage.getItem('spurP')||'{}')}catch(e){}
 const pp=pre||sv;if(pp.name||pp.phone){$('#f [name=name]').value=pp.name||'';$('#f [name=phone]').value=pp.phone||''}
@@ -282,7 +283,7 @@ $('#now').onclick=go('now');$('#now2').onclick=go('now');$('#later').onclick=go(
 $('#fnd').onclick=()=>{$('#co').textContent='';$('#dC').showModal()};
 $('#cd').onclick=()=>{$('#co').textContent='';$('#dC').showModal()};
 $('#ca').onclick=async()=>{const v=$('#ci').value.trim().toUpperCase().slice(0,20);if(!v)return;$('#co').textContent='…';let st='net';try{const r=await fetch(CFG.sb+'/rest/v1/rpc/check_spurtan_code',{method:'POST',headers:{apikey:CFG.sbKey,'Content-Type':'application/json'},body:JSON.stringify({p_code:v})});if(r.ok)st=(await r.json())===true?'ok':'bad'}catch(e){}
-if(st=='ok'){code=v;codeOk=true;$('#co').textContent=t('codeok');$('#cd').textContent='✓ '+v;track('code_applied')}else{code='';codeOk=false;$('#co').textContent=t(st=='bad'?'codebad':'codenet')}};
+if(st=='ok'){code=v;codeOk=true;$('#co').style.color='var(--gold)';$('#co').textContent=t('codeok');track('code_applied');apply();setTimeout(()=>{$('#dC').close();$('#cdmsg').scrollIntoView({block:'center',behavior:'smooth'})},1600)}else{code='';codeOk=false;$('#co').style.color='#ff8a7a';$('#co').textContent=t(st=='bad'?'codebad':'codenet');apply()}};
 $('#occ2').onclick=e=>{const b=e.target.closest('.oc');if(!b)return;const on=b.getAttribute('aria-pressed')=='true';$$('.oc').forEach(x=>x.setAttribute('aria-pressed','false'));$('#occv').value=on?'':b.dataset.v;if(!on)b.setAttribute('aria-pressed','true')};
 
 
